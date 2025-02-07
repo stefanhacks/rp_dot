@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://deap2ti5v54vl"
-path="res://.godot/imported/rogues.png-1a57314d7c0d78c96f698bc1b64228ec.ctex"
+uid="uid://bc1aa0n1y6mti"
+path="res://.godot/imported/mouse_icon.png-66c363ce39739c1962fedc8d2ee7997d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/32_rogues/rogues.png"
-dest_files=["res://.godot/imported/rogues.png-1a57314d7c0d78c96f698bc1b64228ec.ctex"]
+source_file="res://assets/mouse_icon.png"
+dest_files=["res://.godot/imported/mouse_icon.png-66c363ce39739c1962fedc8d2ee7997d.ctex"]
 
 [params]
 

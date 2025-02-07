@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctebg8wk3wgnt"]
+
+[ext_resource type="Texture2D" uid="uid://deap2ti5v54vl" path="res://assets/32_rogues/rogues.png" id="1_x5w4r"]
+
+[node name="RogueSprite" type="Sprite2D"]
+z_index = 2
+y_sort_enabled = true
+texture = ExtResource("1_x5w4r")
+hframes = 6
+vframes = 7
+frame = 40
