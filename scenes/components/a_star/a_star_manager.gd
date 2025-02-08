@@ -12,6 +12,7 @@ func setup_grid(region: Rect2i, cell_size: Vector2i, diagonal := AStarGrid2D.DIA
 
 
 func is_in_bounds(target_cell: Vector2i) -> bool:
+	# Could not get AStargrid2D own method to work. Figured it was easy enough to algo it myself.
 	var x = target_cell.x
 	var y = target_cell.y
 	
@@ -20,6 +21,7 @@ func is_in_bounds(target_cell: Vector2i) -> bool:
 	return within_x and within_y
 
 
+#region Obstacles are considered solid for any pathfinding.
 func is_point_solid(target_cell: Vector2) -> bool:
 	return grid.is_point_solid(target_cell)
 
@@ -31,6 +33,7 @@ func add_obstacle(position: Vector2i) -> void:
 func add_obstacles(obstacles: Array[Vector2i]) -> void:
 	for obstacle in obstacles:
 		add_obstacle(obstacle)
+#endregion
 
 
 func get_path_on_grid(from_cell: Vector2i, to_cell: Vector2i) -> Array[Vector2i]:
@@ -45,4 +48,5 @@ func get_position_on_grid(from_cell: Vector2i) -> Vector2i:
 
 
 func get_centered_position_on_grid(from_cell: Vector2i) -> Vector2i:
+	# Essentially, returns the center of a cell based on its size.
 	return floor(get_position_on_grid(from_cell) + Vector2i(grid.cell_size / 2))
