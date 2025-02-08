@@ -43,5 +43,4 @@ position = Vector2(16, 16)
 rotation = 0.0
 
 [node name="TestSprite" parent="." instance=ExtResource("3_pb3bf")]
-modulate = Color(1, 1, 1, 0.384314)
 position = Vector2(656, 208)

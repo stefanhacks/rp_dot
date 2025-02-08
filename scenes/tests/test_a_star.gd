@@ -10,7 +10,7 @@ extends Node
 
 var targeted_cell := -Vector2i.ONE
 var cells_per_second = 5.0
-var testing_path = []
+var walking_path = []
 var walking_timer: SceneTreeTimer
 
 
@@ -48,21 +48,21 @@ func _move_to(new_target_cell: Vector2) -> void:
 	
 	var sprite_cell = map_markers.local_to_map(test_sprite.global_position)
 	var path := a_star_manager.get_path_on_grid(sprite_cell, new_target_cell)
+	
 	if path.size() > 0:
-		testing_path = path
+		walking_path = path
 		breadcrumb_tracker.place_breadcrumbs_on_grid(path, a_star_manager)
 		_take_step()
 
 
 func _take_step() -> void:
-	return
-	if testing_path.size() > 0:
-		var new_step = testing_path.pop_front()
+	if walking_path.size() > 0:
+		var new_step = walking_path.pop_front()
 		var new_position = a_star_manager.get_centered_position_on_grid(new_step)
 		if test_sprite.position.x != new_position.x:
 			test_sprite.scale.x = -1 if test_sprite.position.x <= new_position.x else 1
 		
-		#breadcrumb_tracker.remove_first()
+		breadcrumb_tracker.remove_first()
 		test_sprite.position = new_position
 		
 		walking_timer = get_tree().create_timer(1.0 / cells_per_second)

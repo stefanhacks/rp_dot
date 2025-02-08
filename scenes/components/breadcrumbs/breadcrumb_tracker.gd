@@ -11,10 +11,10 @@ func remove_first() -> void:
 
 func clean_breadcrumbs() -> void:
 	for breadcrumb in get_children():
-		breadcrumb.queue_free()
+		breadcrumb.free()
 
 
-func _place_breadcrumb(position: Vector2i, is_target: bool) -> void:
+func place_breadcrumb(position: Vector2i, is_target: bool) -> void:
 	var breadcrumb = BREADCRUMB.instantiate()
 	breadcrumb.position = position
 	breadcrumb.is_target = is_target
@@ -28,4 +28,4 @@ func place_breadcrumbs_on_grid(cell_positions: Array[Vector2i], a_star_manager: 
 		index += 1
 		var breadcrumb_position = a_star_manager.get_centered_position_on_grid(cell)
 		var is_target = index == cell_positions.size()
-		_place_breadcrumb(breadcrumb_position, is_target)
+		place_breadcrumb(breadcrumb_position, is_target)
