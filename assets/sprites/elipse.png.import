@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bf2hg33oikyh1"
-path="res://.godot/imported/elipse.png-9b9f8e4d9afc62248bde276a460eae5c.ctex"
+path="res://.godot/imported/elipse.png-f9050223e48607f0136ad395f8192801.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/elipse.png"
-dest_files=["res://.godot/imported/elipse.png-9b9f8e4d9afc62248bde276a460eae5c.ctex"]
+source_file="res://assets/sprites/elipse.png"
+dest_files=["res://.godot/imported/elipse.png-f9050223e48607f0136ad395f8192801.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1jpb5guvwrl4"
-path="res://.godot/imported/animals.png-7bd7c22b57f5f1d4ed77a0f84441b149.ctex"
+uid="uid://m1s67eun4f01"
+path="res://.godot/imported/target.png-5952bd82c24fb6db8ac4d0aac951fe59.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/32_rogues/animals.png"
-dest_files=["res://.godot/imported/animals.png-7bd7c22b57f5f1d4ed77a0f84441b149.ctex"]
+source_file="res://assets/sprites/target.png"
+dest_files=["res://.godot/imported/target.png-5952bd82c24fb6db8ac4d0aac951fe59.ctex"]
 
 [params]
 
