@@ -18,18 +18,44 @@ grow_vertical = 2
 theme = ExtResource("1_dptwe")
 script = ExtResource("2_x86b6")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(40, 4)
+[node name="Bar1" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(12, 4)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -36.0
-offset_right = 20.0
-offset_bottom = -32.0
+offset_left = 45.0
+offset_top = 4.00005
+offset_right = 57.0
+offset_bottom = 8.00005
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+pivot_offset = Vector2(-8, 0)
+size_flags_vertical = 10
+texture = SubResource("CanvasTexture_kf2is")
+
+[node name="Bar2" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(12, 4)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 31.0
+offset_top = 4.00005
+offset_right = 43.0
+offset_bottom = 8.00005
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 3.14159
+pivot_offset = Vector2(6, 0)
+size_flags_vertical = 10
+texture = SubResource("CanvasTexture_kf2is")
+
+[node name="Bar3" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(12, 4)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 17.0
+offset_top = 4.00005
+offset_right = 29.0
+offset_bottom = 8.00005
 grow_horizontal = 2
 grow_vertical = 0
 rotation = 3.14159
