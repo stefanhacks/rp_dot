@@ -22,19 +22,20 @@ func _ready() -> void:
 	modulate = bar_color
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
+	randomize()
 	_update_bar()
 
 
 func _update_bar() -> void:
-	number_of_rolls += 1
-	sum_of_rolls += DiceTray.roll(dice_type)
-	sum_of_rolls_keep_low += DiceTray.roll_two_keep_low(dice_type)
-	sum_of_rolls_keep_high += DiceTray.roll_two_keep_high(dice_type)
+	number_of_rolls += 1.0
+	sum_of_rolls += DiceTray.roll(dice_type).sum
+	sum_of_rolls_keep_low += DiceTray.roll(dice_type, 0, DiceTray.RollStyle.TWICE_KEEP_LOW).sum
+	sum_of_rolls_keep_high += DiceTray.roll(dice_type, 0, DiceTray.RollStyle.TWICE_KEEP_HIGH).sum
 	
-	var average = sum_of_rolls / number_of_rolls
+	var average = float(sum_of_rolls) / number_of_rolls
 	avg_label.text = "%2.2f" % average
 	
-	bar_1.size.y = max_bar_size * (sum_of_rolls_keep_low / number_of_rolls) / dice_type
-	bar_2.size.y = max_bar_size * average / dice_type
-	bar_3.size.y = max_bar_size * (sum_of_rolls_keep_high / number_of_rolls) / dice_type
+	bar_1.size.y = max_bar_size * (sum_of_rolls_keep_low / number_of_rolls) / float(dice_type)
+	bar_2.size.y = max_bar_size * average / float(dice_type)
+	bar_3.size.y = max_bar_size * (sum_of_rolls_keep_high / number_of_rolls) / float(dice_type)

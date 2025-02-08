@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://otluy0e6kvrr"]
+[gd_scene load_steps=4 format=3 uid="uid://otluy0e6kvrr"]
 
 [ext_resource type="Theme" uid="uid://imywmyclef1c" path="res://themes/test_theme.tres" id="1_uy5wk"]
 [ext_resource type="PackedScene" uid="uid://c5quq2gqt7r1i" path="res://scenes/tests/test_dice_statistic.tscn" id="3_ljxbr"]
+[ext_resource type="PackedScene" uid="uid://d4b7sc8xnr64h" path="res://scenes/tests/test_dice_explosion.tscn" id="3_ody81"]
 
 [node name="TestDiceTray" type="CenterContainer"]
 anchors_preset = 15
@@ -15,34 +16,43 @@ theme = ExtResource("1_uy5wk")
 layout_mode = 2
 theme_override_constants/margin_top = 200
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
-[node name="D4" parent="MarginContainer/HBoxContainer" instance=ExtResource("3_ljxbr")]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="D4" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_ljxbr")]
 layout_mode = 2
 bar_color = Color(0.988235, 0.278431, 0.290196, 1)
 
-[node name="D6" parent="MarginContainer/HBoxContainer" instance=ExtResource("3_ljxbr")]
+[node name="D6" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_ljxbr")]
 layout_mode = 2
 bar_color = Color(0.0627451, 0.505882, 0.439216, 1)
 dice_type = 6
 
-[node name="D8" parent="MarginContainer/HBoxContainer" instance=ExtResource("3_ljxbr")]
+[node name="D8" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_ljxbr")]
 layout_mode = 2
 bar_color = Color(0.529412, 0.341176, 0.682353, 1)
 dice_type = 8
 
-[node name="D10" parent="MarginContainer/HBoxContainer" instance=ExtResource("3_ljxbr")]
+[node name="D10" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_ljxbr")]
 layout_mode = 2
 bar_color = Color(1, 0.631373, 0, 1)
 dice_type = 10
 
-[node name="D12" parent="MarginContainer/HBoxContainer" instance=ExtResource("3_ljxbr")]
+[node name="D12" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_ljxbr")]
 layout_mode = 2
 bar_color = Color(1, 0.25098, 0.45098, 1)
 dice_type = 12
 
-[node name="D20" parent="MarginContainer/HBoxContainer" instance=ExtResource("3_ljxbr")]
+[node name="D20" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_ljxbr")]
 layout_mode = 2
 bar_color = Color(0, 0.662745, 0.898039, 1)
 dice_type = 20
+
+[node name="TestDiceExplosion" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_ody81")]
+custom_minimum_size = Vector2(390, 0)
+layout_mode = 2
+size_flags_vertical = 4
