@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=5 format=3 uid="uid://cd5cv4b67p852"]
 
 [ext_resource type="Texture2D" uid="uid://cdlu2x0bus6ee" path="res://assets/32_rogues/tiles.png" id="1_hobll"]
-[ext_resource type="PackedScene" uid="uid://dvcl3x6xjgv1e" path="res://scenes/components/a_star/map_marker.tscn" id="2_b5y7h"]
+[ext_resource type="PackedScene" uid="uid://dvcl3x6xjgv1e" path="res://scenes/components/a_star/grid_marker.tscn" id="2_b5y7h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ulan4"]
 texture = ExtResource("1_hobll")
