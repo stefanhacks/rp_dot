@@ -1,5 +1,6 @@
 <p align="center">
   <img src="https://github.com/user-attachments/assets/34172511-4f1b-4295-b501-48bf8851fee0" />
+  <img src="https://github.com/user-attachments/assets/ab594749-8d7d-44e7-8b7a-4de8182736ef" />
 </p>
 
 # Small Project that Simulates PnP Turn Based Battles
