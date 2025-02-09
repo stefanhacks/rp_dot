@@ -15,10 +15,8 @@ enum RollStyle {
 	TWICE_KEEP_LOW,
 }
 
-var explode = false
 
-
-func roll(faces: Dice, modifier: int = 0, style = RollStyle.ONCE) -> DiceRoll:
+func roll(faces: Dice, modifier: int = 0, style = RollStyle.ONCE, explode = false) -> DiceRoll:
 	var diceroll = DiceRoll.new(faces, modifier, style)
 	
 	var roll_function: Callable

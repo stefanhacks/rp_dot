@@ -13,6 +13,5 @@ func _ready() -> void:
 
 
 func _on_button_pressed() -> void:
-	DiceTray.explode = true
-	var result = DiceTray.roll(dice_type, 3, DiceTray.RollStyle.TWICE_KEEP_HIGH)
+	var result = DiceTray.roll(dice_type, 3, DiceTray.RollStyle.TWICE_KEEP_HIGH, true)
 	results_label.text = "{0}, {1} + {2}, from {3}".format([result.total, result.sum, result.modifier, " + ".join(result.rolls)])
