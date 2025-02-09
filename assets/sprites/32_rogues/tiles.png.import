@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://r57881bfq8r3"
-path="res://.godot/imported/monsters.png-cdbadbd89f1f34dea7ed83a06a546f8f.ctex"
+uid="uid://cdlu2x0bus6ee"
+path="res://.godot/imported/tiles.png-6c2c4a35975ca0367aa8e223f5b65fa1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/32_rogues/monsters.png"
-dest_files=["res://.godot/imported/monsters.png-cdbadbd89f1f34dea7ed83a06a546f8f.ctex"]
+source_file="res://assets/sprites/32_rogues/tiles.png"
+dest_files=["res://.godot/imported/tiles.png-6c2c4a35975ca0367aa8e223f5b65fa1.ctex"]
 
 [params]
 

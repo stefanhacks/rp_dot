@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmfx0xelcthnn"
-path="res://.godot/imported/t_d12.png-39df743f8c6b7a02b74e4bc34f642923.ctex"
+uid="uid://c1jpb5guvwrl4"
+path="res://.godot/imported/animals.png-f7295b03e1f1681b66791769768ccfb2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/dice/t_d12.png"
-dest_files=["res://.godot/imported/t_d12.png-39df743f8c6b7a02b74e4bc34f642923.ctex"]
+source_file="res://assets/sprites/32_rogues/animals.png"
+dest_files=["res://.godot/imported/animals.png-f7295b03e1f1681b66791769768ccfb2.ctex"]
 
 [params]
 
