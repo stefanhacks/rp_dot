@@ -21,10 +21,6 @@ enum Stat {
 	RUN,
 	DAMAGE,
 	SURGE,
-	STRIKE_BONUS,
-	DEFEND_BONUS,
-	AFFECT_BONUS,
-	RESIST_BONUS,
 }
 
 enum ActionType {

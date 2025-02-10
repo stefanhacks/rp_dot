@@ -3,39 +3,39 @@
 [ext_resource type="Script" path="res://scripts/abstracts/character.gd" id="1_3the1"]
 [ext_resource type="Script" path="res://scenes/tests/test_character.gd" id="1_jgy28"]
 [ext_resource type="Script" path="res://scripts/abstracts/stats.gd" id="3_mcajg"]
-[ext_resource type="Script" path="res://scripts/abstracts/proficiency.gd" id="4_kl6bs"]
+[ext_resource type="Script" path="res://scripts/abstracts/knack.gd" id="4_kl6bs"]
 [ext_resource type="Script" path="res://scripts/abstracts/trophy.gd" id="5_4riic"]
 
-[sub_resource type="Resource" id="Resource_cpfl8"]
+[sub_resource type="Resource" id="Resource_ywq6j"]
 script = ExtResource("3_mcajg")
-max_health = 4
-surge = 1
-move = 4
+max_health = 2
+surge = 2
+move = 2
 run = 2
-damage = 1
-strike_bonus = 1
+damage = 2
+strike_bonus = 2
 defend_bonus = 2
-affect_bonus = 3
-resist_bonus = 4
+affect_bonus = 2
+resist_bonus = 2
 
-[sub_resource type="Resource" id="Resource_vslj0"]
+[sub_resource type="Resource" id="Resource_syb2h"]
 script = ExtResource("4_kl6bs")
-strike = 10
+strike = 4
 defend = 6
-affect = 0
-resist = 6
+affect = 10
+resist = 12
 
-[sub_resource type="Resource" id="Resource_4l04h"]
+[sub_resource type="Resource" id="Resource_pdl7o"]
 script = ExtResource("3_mcajg")
-max_health = 0
-surge = 0
-move = 0
-run = 0
-damage = 0
-strike_bonus = 0
-defend_bonus = 0
-affect_bonus = 0
-resist_bonus = 0
+max_health = 1
+surge = 1
+move = 1
+run = 1
+damage = 1
+strike_bonus = -4
+defend_bonus = 1
+affect_bonus = 1
+resist_bonus = 1
 
 [sub_resource type="Resource" id="Resource_tx511"]
 script = ExtResource("5_4riic")
@@ -49,7 +49,9 @@ script = ExtResource("1_jgy28")
 
 [node name="Character" type="Node" parent="."]
 script = ExtResource("1_3the1")
-stats = SubResource("Resource_cpfl8")
-proficiency = SubResource("Resource_vslj0")
-mods = SubResource("Resource_4l04h")
+stats = SubResource("Resource_ywq6j")
+knack = SubResource("Resource_syb2h")
+mods = SubResource("Resource_pdl7o")
 trophies = Array[ExtResource("5_4riic")]([SubResource("Resource_tx511")])
+
+[connection signal="health_reached_zero" from="Character" to="." method="_on_character_health_reached_zero"]
