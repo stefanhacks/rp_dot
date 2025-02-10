@@ -2,7 +2,7 @@ extends Control
 
 @export var pure_test = false
 @export var bar_color := Color.WHITE
-@export var dice_type: DiceTray.Dice = DiceTray.Dice.D4
+@export var dice_type: Ruleset.Dice = Ruleset.Dice.D4
 
 var number_of_rolls = 0.0
 var sum_of_rolls = 0.0
@@ -37,8 +37,8 @@ func _update_bar() -> void:
 		sum_of_rolls_keep_high += maxi(randi_range(1, dice_type), randi_range(1, dice_type))
 	else:
 		sum_of_rolls += DiceTray.roll(dice_type).sum
-		sum_of_rolls_keep_low += DiceTray.roll(dice_type, 0, DiceTray.RollStyle.TWICE_KEEP_LOW).sum
-		sum_of_rolls_keep_high += DiceTray.roll(dice_type, 0, DiceTray.RollStyle.TWICE_KEEP_HIGH).sum
+		sum_of_rolls_keep_low += DiceTray.roll(dice_type, 0, Ruleset.RollStyle.TWICE_KEEP_LOW).sum
+		sum_of_rolls_keep_high += DiceTray.roll(dice_type, 0, Ruleset.RollStyle.TWICE_KEEP_HIGH).sum
 	
 	var average = float(sum_of_rolls) / number_of_rolls
 	avg_label.text = "%2.2f" % average
