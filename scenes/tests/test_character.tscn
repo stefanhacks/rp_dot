@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/abstracts/character.gd" id="1_3the1"]
 [ext_resource type="Script" path="res://scenes/tests/test_character.gd" id="1_jgy28"]
 [ext_resource type="Script" path="res://scripts/abstracts/stats.gd" id="3_mcajg"]
-[ext_resource type="Script" path="res://scripts/abstracts/dice_stats.gd" id="4_kl6bs"]
+[ext_resource type="Script" path="res://scripts/abstracts/proficiency.gd" id="4_kl6bs"]
 [ext_resource type="Script" path="res://scripts/abstracts/trophy.gd" id="5_4riic"]
 
 [sub_resource type="Resource" id="Resource_cpfl8"]
