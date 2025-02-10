@@ -1,29 +1,14 @@
 extends Node
 
-enum Dice { 
-	D4 = 4,
-	D6 = 6,
-	D8 = 8,
-	D10 = 10,
-	D12 = 12,
-	D20 = 20,
-}
 
-enum RollStyle {
-	ONCE,
-	TWICE_KEEP_HIGH,
-	TWICE_KEEP_LOW,
-}
-
-
-func roll(faces: Dice, modifier: int = 0, style = RollStyle.ONCE, explode = false) -> DiceRoll:
+func roll(faces: Ruleset.Dice, modifier: int = 0, style = Ruleset.RollStyle.ONCE, explode = false) -> DiceRoll:
 	var diceroll = DiceRoll.new(faces, modifier, style)
 	
 	var roll_function: Callable
 	match style:
-		RollStyle.TWICE_KEEP_HIGH, RollStyle.TWICE_KEEP_LOW:
+		Ruleset.RollStyle.TWICE_KEEP_HIGH, Ruleset.RollStyle.TWICE_KEEP_LOW:
 			roll_function = _roll_two_keep
-		RollStyle.ONCE, _:
+		Ruleset.RollStyle.ONCE, _:
 			roll_function = _roll_once
 	
 	if explode == false:
@@ -54,10 +39,10 @@ func _explode(diceroll: DiceRoll, roll_function: Callable) -> DiceRoll:
 
 
 class DiceRoll:
-	var faces: Dice = Dice.D4
+	var faces: Ruleset.Dice = Ruleset.Dice.D4
 	var modifier: int = 0
 	var rolls: Array = []
-	var style: RollStyle = RollStyle.ONCE
+	var style: Ruleset.RollStyle = Ruleset.RollStyle.ONCE
 	
 	var sum: int:
 		get():
@@ -67,7 +52,7 @@ class DiceRoll:
 			return sum + modifier
 
 
-	func _init(n_faces: Dice, sum_modifier: int, rollstyle: RollStyle) -> void:
+	func _init(n_faces: Ruleset.Dice, sum_modifier: int, rollstyle: Ruleset.RollStyle) -> void:
 		faces = n_faces
 		modifier = sum_modifier
 		style = rollstyle
@@ -75,10 +60,9 @@ class DiceRoll:
 	
 	func parse_roll(roll) -> int:
 		if typeof(roll) == TYPE_ARRAY:
-			if style == RollStyle.TWICE_KEEP_HIGH:
+			if style == Ruleset.RollStyle.TWICE_KEEP_HIGH:
 				return maxi(roll[0], roll[1])
 			else:
 				return mini(roll[0], roll[1])
 		else:
 			return roll
-	
