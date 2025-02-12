@@ -5,11 +5,9 @@ signal health_reached_zero
 
 # Core Stats
 @export var stats = Stats.new()
-@export var knack = Knack.new()
 
 # Mods
-@export var _enchants: Array[TemporaryModifier] = []
-@export var _trophies: Array[Modifier] = []
+@export var _enchants: Array[ModifierTemporary] = []
 
 # Vars
 var current_health: int
@@ -18,13 +16,6 @@ var is_alive: bool:
 
 
 #region Basic Stats
-func roll_for(action: Ruleset.ActionType) -> DiceRoll:
-	var dice = knack.get_value(action)
-	var modifier = get_total_value(Ruleset.action_to_bonus_stat(action))
-	
-	return DiceTray.roll(dice, modifier)
-
-
 func heal(amount: int = stats.get_value(Ruleset.Stat.MAX_HEALTH)) -> void:
 	if amount > 0:
 		current_health = min(stats.get_value(Ruleset.Stat.MAX_HEALTH), current_health + amount)
@@ -39,9 +30,8 @@ func take_damage(amount: int) -> void:
 func get_total_value(stat: Ruleset.Stat) -> int:
 	var base = stats.get_value(stat)
 	var _enchants_total = get_enchants_total(stat)
-	var _trophies_total = get_trophies_total(stat)
 	
-	return base + _enchants_total + _trophies_total
+	return base + _enchants_total
 
 
 #endregion
@@ -60,20 +50,13 @@ func _get_mods_total(source_array: Array, stat: Ruleset.Stat) -> int:
 	return source_array.reduce(sum_relevant_mod, 0)
 
 
-func add_enchant(enchant: TemporaryModifier) -> void:
+func add_enchant(enchant: ModifierTemporary) -> void:
 	_enchants.append(enchant)
 
-
-func add_trophy(trophy: Modifier) -> void:
-	_trophies.append(trophy)
 
 
 func get_enchants_total(stat: Ruleset.Stat) -> int:
 	return _get_mods_total(_enchants as Array[Modifier], stat)
-
-
-func get_trophies_total(stat: Ruleset.Stat) -> int:
-	return _get_mods_total(_trophies, stat)
 
 
 #endregion

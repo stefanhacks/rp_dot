@@ -20,19 +20,6 @@ extends Resource
 	set(value): set_value(Ruleset.Stat.DAMAGE, value)
 	get(): return get_value(Ruleset.Stat.DAMAGE)
 
-# Static bonus for every action type.
-@export var strike_bonus: int:
-	set(value): set_value(Ruleset.Stat.STRIKE_BONUS, value)
-	get():return get_value(Ruleset.Stat.STRIKE_BONUS)
-@export var defend_bonus: int:
-	set(value): set_value(Ruleset.Stat.DEFEND_BONUS, value)
-	get(): return get_value(Ruleset.Stat.DEFEND_BONUS)
-@export var affect_bonus: int:
-	set(value): set_value(Ruleset.Stat.AFFECT_BONUS, value)
-	get(): return get_value(Ruleset.Stat.AFFECT_BONUS)
-@export var resist_bonus: int:
-	set(value): set_value(Ruleset.Stat.RESIST_BONUS, value)
-	get(): return get_value(Ruleset.Stat.RESIST_BONUS)
 
 # Stored Values
 var _values: Array[int] = []

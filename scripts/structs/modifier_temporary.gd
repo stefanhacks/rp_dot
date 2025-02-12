@@ -1,4 +1,4 @@
-class_name TemporaryModifier
+class_name ModifierTemporary
 extends Modifier
 
 @export var turns_remaining: int

@@ -22,10 +22,10 @@ enum Stat {
 	RUN,
 	DAMAGE,
 	SURGE,
-	STRIKE_BONUS,
-	DEFEND_BONUS,
-	AFFECT_BONUS,
-	RESIST_BONUS,
+	STRIKE,
+	DEFEND,
+	AFFECT,
+	RESIST,
 }
 
 enum ActionType {
@@ -35,16 +35,16 @@ enum ActionType {
 	RESIST,
 }
 
-func action_to_bonus_stat(action: ActionType) -> Stat:
+func action_to_stat(action: ActionType) -> Stat:
 	match action:
 		ActionType.STRIKE:
-			return Stat.STRIKE_BONUS
+			return Stat.STRIKE
 		ActionType.DEFEND:
-			return Stat.DEFEND_BONUS
+			return Stat.DEFEND
 		ActionType.AFFECT:
-			return Stat.AFFECT_BONUS
+			return Stat.AFFECT
 		ActionType.RESIST:
-			return Stat.RESIST_BONUS
+			return Stat.RESIST
 		_: 
-			push_error("Non valid action provided in action_to_bonus_stat call.")
+			push_error("Non valid action provided in action_to_stat call.")
 			return Stat.MAX_HEALTH

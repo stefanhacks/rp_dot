@@ -1,24 +1,24 @@
 extends Node2D
 
-@onready var character: Character = $Character
+@onready var character: CharacterPlayable = $Character
 
 func _ready() -> void:
 	_test_attack()
 	print(" ")
 	_test_health()
 	print(" ")
-	_test_trophy(Ruleset.Stat.STRIKE_BONUS)
+	_test_trophy(Ruleset.Stat.STRIKE)
 	_test_trophy(Ruleset.Stat.MAX_HEALTH)
 	
 
 func _test_attack() -> void:
 	print ("# Testing Strike")
 	var action = Ruleset.ActionType.STRIKE
-	var stat = Ruleset.action_to_bonus_stat(action)
+	var stat = Ruleset.action_to_stat(action)
 	character.stats.set_value(stat, -1)
 	character.knack.strike = Ruleset.Dice.D4
 	
-	var enchant = TemporaryModifier.new()
+	var enchant = ModifierTemporary.new()
 	enchant.set_value(stat, 2)
 	character.add_enchant(enchant)
 	
