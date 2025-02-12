@@ -4,10 +4,10 @@ extends Node
 signal health_reached_zero
 
 # Core Stats
-@export var stats = Stats.new()
+@export var stats: Stats
 
 # Mods
-@export var _enchants: Array[ModifierTemporary] = []
+@export var _enchants: Array[ModifierTemporary]
 
 # Vars
 var current_health: int
