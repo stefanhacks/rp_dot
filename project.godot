@@ -11,12 +11,14 @@ config_version=5
 [application]
 
 config/name="RPDot"
+run/main_scene="res://scenes/tests/test_a_star.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
-DiceTray="*res://scripts/dice_tray.gd"
+Ruleset="*res://scripts/globals/ruleset.gd"
+DiceTray="*res://scripts/globals/dice_tray.gd"
 
 [display]
 
@@ -30,6 +32,7 @@ mouse_cursor/custom_image="res://assets/mouse_icon.png"
 
 folder_colors={
 "res://assets/": "red",
+"res://resources/": "orange",
 "res://scenes/": "green",
 "res://scripts/": "purple",
 "res://themes/": "yellow",
