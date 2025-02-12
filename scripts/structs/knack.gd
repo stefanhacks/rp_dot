@@ -3,16 +3,16 @@ class_name Knack
 extends Resource
 
 # Accessors
-@export var strike: Ruleset.Dice = Ruleset.Dice.D4: # Basic attack die.
+@export var strike: Ruleset.Dice: # Basic attack die.
 	set(value): set_value(Ruleset.ActionType.STRIKE, value)
 	get(): return get_value(Ruleset.ActionType.STRIKE)
-@export var defend: Ruleset.Dice = Ruleset.Dice.D4: # Basic protect self from monsters die.
+@export var defend: Ruleset.Dice: # Basic protect self from monsters die.
 	set(value): set_value(Ruleset.ActionType.DEFEND, value)
 	get(): return get_value(Ruleset.ActionType.DEFEND)
-@export var affect: Ruleset.Dice = Ruleset.Dice.D4: # Basic interaction with world die.
+@export var affect: Ruleset.Dice: # Basic interaction with world die.
 	set(value): set_value(Ruleset.ActionType.AFFECT, value)
 	get(): return get_value(Ruleset.ActionType.AFFECT)
-@export var resist: Ruleset.Dice = Ruleset.Dice.D4: # Basic shrug effects off die.
+@export var resist: Ruleset.Dice: # Basic shrug effects off die.
 	set(value): set_value(Ruleset.ActionType.RESIST, value)
 	get(): return get_value(Ruleset.ActionType.RESIST)
 

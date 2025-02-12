@@ -18,14 +18,14 @@ func roll(faces: Ruleset.Dice, modifier: int = 0, style = Ruleset.RollStyle.ONCE
 
 
 func _roll_once(diceroll: DiceRoll) -> DiceRoll:
-	var value = randi_range(1, diceroll.faces)
-	diceroll.rolls.append(value)
+	var value: int = randi_range(1, diceroll.faces)
+	diceroll.add_roll(value)
 	return diceroll
 
 
 func _roll_two_keep(diceroll: DiceRoll) -> DiceRoll:
-	var values = [randi_range(1, diceroll.faces), randi_range(1, diceroll.faces)]
-	diceroll.rolls.append(values)
+	var values: Array[int] = [randi_range(1, diceroll.faces), randi_range(1, diceroll.faces)]
+	diceroll.add_roll_pair(values)
 	return diceroll
 
 

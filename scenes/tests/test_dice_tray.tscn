@@ -23,6 +23,11 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
+[node name="D2" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_ljxbr")]
+layout_mode = 2
+bar_color = Color(0, 0.662745, 0.898039, 1)
+dice_type = 2
+
 [node name="D4" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_ljxbr")]
 layout_mode = 2
 bar_color = Color(0.988235, 0.278431, 0.290196, 1)
@@ -46,11 +51,6 @@ dice_type = 10
 layout_mode = 2
 bar_color = Color(1, 0.25098, 0.45098, 1)
 dice_type = 12
-
-[node name="D20" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_ljxbr")]
-layout_mode = 2
-bar_color = Color(0, 0.662745, 0.898039, 1)
-dice_type = 20
 
 [node name="TestDiceExplosion" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_ody81")]
 custom_minimum_size = Vector2(390, 0)

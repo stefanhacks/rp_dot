@@ -22,17 +22,17 @@ extends Resource
 
 # Static bonus for every action type.
 @export var strike_bonus: int:
-	set(value): set_bonus(Ruleset.ActionType.STRIKE, value)
-	get():return get_bonus(Ruleset.ActionType.STRIKE)
+	set(value): set_value(Ruleset.Stat.STRIKE_BONUS, value)
+	get():return get_value(Ruleset.Stat.STRIKE_BONUS)
 @export var defend_bonus: int:
-	set(value): set_bonus(Ruleset.ActionType.DEFEND, value)
-	get(): return get_bonus(Ruleset.ActionType.DEFEND)
+	set(value): set_value(Ruleset.Stat.DEFEND_BONUS, value)
+	get(): return get_value(Ruleset.Stat.DEFEND_BONUS)
 @export var affect_bonus: int:
-	set(value): set_bonus(Ruleset.ActionType.AFFECT, value)
-	get(): return get_bonus(Ruleset.ActionType.AFFECT)
+	set(value): set_value(Ruleset.Stat.AFFECT_BONUS, value)
+	get(): return get_value(Ruleset.Stat.AFFECT_BONUS)
 @export var resist_bonus: int:
-	set(value): set_bonus(Ruleset.ActionType.RESIST, value)
-	get(): return get_bonus(Ruleset.ActionType.RESIST)
+	set(value): set_value(Ruleset.Stat.RESIST_BONUS, value)
+	get(): return get_value(Ruleset.Stat.RESIST_BONUS)
 
 # Stored Values
 var _values: Array[int] = []
@@ -48,11 +48,3 @@ func set_value(stat: Ruleset.Stat, value: int) -> void:
 
 func get_value(stat: Ruleset.Stat) -> int:
 	return _values[stat]
-
-
-func set_bonus(action: Ruleset.ActionType, value: int) -> void:
-	_values[action + Ruleset.Stat.keys().size()] = value
-
-
-func get_bonus(action: Ruleset.ActionType) -> int:
-	return _values[action + Ruleset.Stat.keys().size()]
