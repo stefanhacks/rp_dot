@@ -18,7 +18,7 @@ enum RollStyle {
 
 enum Stat {
 	MAX_HEALTH,
-	MOVE,
+	WALK,
 	RUN,
 	DAMAGE,
 	SURGE,

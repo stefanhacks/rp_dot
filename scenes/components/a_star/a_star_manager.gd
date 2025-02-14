@@ -21,7 +21,6 @@ func is_in_bounds(target_cell: Vector2i) -> bool:
 	return within_x and within_y
 
 
-#region Obstacles are considered solid for any pathfinding.
 func is_point_solid(target_cell: Vector2) -> bool:
 	return grid.is_point_solid(target_cell)
 
@@ -33,7 +32,6 @@ func add_obstacle(position: Vector2i) -> void:
 func add_obstacles(obstacles: Array[Vector2i]) -> void:
 	for obstacle in obstacles:
 		add_obstacle(obstacle)
-#endregion
 
 
 func get_path_on_grid(from_cell: Vector2i, to_cell: Vector2i) -> Array[Vector2i]:
