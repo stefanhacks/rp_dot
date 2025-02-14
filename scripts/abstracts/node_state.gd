@@ -5,21 +5,21 @@ extends Node
 signal transition 
 
 
-func _on_process(_delta : float) -> void:
+func on_process(_delta : float) -> void:
 	pass
 
 
-func _on_physics_process(_delta : float) -> void:
+func on_physics_process(_delta : float) -> void:
 	pass
 
 
-func _on_next_transitions() -> void:
+func on_next_transitions() -> void:
 	pass
 
 
-func _on_enter() -> void:
+func on_enter(_args: Dictionary) -> void:
 	pass
 
 
-func _on_exit() -> void:
+func on_exit() -> void:
 	pass
