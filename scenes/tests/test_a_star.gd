@@ -51,7 +51,7 @@ func _move_to(new_target_cell: Vector2) -> void:
 	
 	if path.size() > 0:
 		walking_path = path
-		breadcrumb_tracker.place_breadcrumbs_on_grid(path, 0,0)
+		breadcrumb_tracker.place_breadcrumbs_on_grid(path, 5, 5)
 		_take_step()
 
 

@@ -20,7 +20,7 @@ affect_peril = 0
 resist_peril = 0
 max_health = 0
 surge = 0
-move = 0
+walk = 0
 run = 0
 damage = 0
 
