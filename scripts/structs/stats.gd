@@ -10,9 +10,9 @@ extends Resource
 @export var surge: int: # Highest value goes first.
 	set(value): set_value(Ruleset.Stat.SURGE, value)
 	get(): return get_value(Ruleset.Stat.SURGE)
-@export var move: int: # Available movement distance.
-	set(value): set_value(Ruleset.Stat.MOVE, value)
-	get(): return get_value(Ruleset.Stat.MOVE)
+@export var walk: int: # Available movement distance.
+	set(value): set_value(Ruleset.Stat.WALK, value)
+	get(): return get_value(Ruleset.Stat.WALK)
 @export var run: int: # Extra move if not striking.
 	set(value): set_value(Ruleset.Stat.RUN, value)
 	get(): return get_value(Ruleset.Stat.RUN)
