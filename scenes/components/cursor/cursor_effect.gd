@@ -6,11 +6,20 @@ const SEGMENT_AMOUNT = 15.0
 
 var effect: Effect = Effect.NONE
 var source_position: Vector2
+var target_nodes: Array[Node2D]
 
 enum Effect {
 	NONE,
 	TARGETING,
 }
+
+
+func _ready() -> void:
+	for i in range(SEGMENT_AMOUNT):
+		var breadcrumb = CURSOR_BREADCRUMB.instantiate()
+		breadcrumb.visible = false
+		target_nodes.push_back(breadcrumb)
+		add_child(breadcrumb)
 
 
 func _physics_process(_delta: float) -> void:
@@ -19,18 +28,23 @@ func _physics_process(_delta: float) -> void:
 		Effect.NONE, _: pass
 
 
-func enable_targeting_effect(from: Node2D) -> void:
-	source_position = from.global_position
+func _set_breadcrumbs_visible(status: bool = true) -> void:
+	for node in target_nodes:
+		node.visible = status
+
+
+func enable_targeting_effect(from: Vector2) -> void:
+	_set_breadcrumbs_visible()
+	source_position = from
 	effect = Effect.TARGETING
 
 
-func _clear_effect() -> void:
-	for child in get_children():
-		child.queue_free()
+func disable_targeting_effect() -> void:
+	_set_breadcrumbs_visible(false)
+	effect = Effect.NONE
 
 
 func _update_targeting_effect() -> void:
-	_clear_effect()
 	var cursor_position = get_viewport().get_mouse_position()
 	var difference = cursor_position - source_position
 	
@@ -40,10 +54,4 @@ func _update_targeting_effect() -> void:
 			difference.x * ease(progress, 1.0),
 			difference.y * ease(progress, 0.4),
 		)
-		_add_breadcrumb(source_position + eased_position)
-
-
-func _add_breadcrumb(position: Vector2) -> void:
-	var breadcrumb = CURSOR_BREADCRUMB.instantiate()
-	breadcrumb.position = position
-	add_child(breadcrumb)
+		target_nodes[i].position = source_position + eased_position
