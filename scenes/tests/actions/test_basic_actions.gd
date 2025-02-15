@@ -5,14 +5,16 @@ extends Node
 @export var terrain_markers: TileMapLayer
 
 @export var action_walk: ActionStateMachine
+@export var action_strike: ActionStateMachine
 
+var _current_action: ActionStateMachine
 var _test_running: bool = false
+var _test_stage = 0
 
 
 func _ready() -> void:
-	action_walk.action_performed.connect(_stop_action)
-	action_walk.action_cancelled.connect(_cancel_action)
 	_setup_grid()
+	_current_action = action_walk
 
 
 func _setup_grid() -> void:
@@ -22,29 +24,37 @@ func _setup_grid() -> void:
 	a_star_manager.add_obstacles(terrain_markers.get_used_cells())
 
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed('left_click') and _test_running == false:
+func _process(delta: float) -> void:
+	if _test_running:
+		_current_action.on_action_process(delta)
+
+
+func _physics_process(delta: float) -> void:
+	if _test_running:
+		_current_action.on_action_physics_process(delta)
+	elif Input.is_action_just_pressed('left_click'):
 		_do_action()
 
 
 func _do_action() -> void:
 	_test_running = true
-	action_walk.on_action_ready()
+	_current_action.action_performed.connect(_stop_action)
+	_current_action.action_cancelled.connect(_cancel_action)
+	_current_action.on_action_ready()
 
 
 func _cancel_action() -> void:
+	_disconnect_current_action()
 	_test_running = false
 
 
 func _stop_action() -> void:
+	_disconnect_current_action()
 	_test_running = false
+	_test_stage = (_test_stage + 1) % 2
+	_current_action = action_walk if _test_stage == 0 else action_strike
 
 
-func _process(delta: float) -> void:
-	if _test_running:
-		action_walk.on_action_process(delta)
-
-
-func _physics_process(delta: float) -> void:
-	if _test_running:
-		action_walk.on_action_physics_process(delta)
+func _disconnect_current_action() -> void:
+	_current_action.action_performed.disconnect(_stop_action)
+	_current_action.action_cancelled.disconnect(_cancel_action)

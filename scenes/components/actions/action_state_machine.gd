@@ -8,6 +8,7 @@ static var PERFORMED = "performed"
 
 @export var a_star_manager: AStarManager
 @export var breadcrumb_tracker: BreadcrumbTracker
+@export var cursor_effect: CursorEffect
 @export var character: CharacterPlayable
 @export var map: Node2D
 
@@ -29,6 +30,7 @@ func _ready() -> void:
 	default_args = {
 		"a_star_manager": a_star_manager,
 		"breadcrumb_tracker": breadcrumb_tracker,
+		"cursor_effect": cursor_effect,
 		"character": character,
 		"map": map,
 	}
