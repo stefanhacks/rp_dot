@@ -17,7 +17,9 @@ signal action_performed
 var default_args: Dictionary = {}
 var node_states: Dictionary = {}
 var current_state: NodeState
+
 var uses_left: int
+var cancel_cleanup: Callable
 
 static var CANCELLED = "cancelled"
 static var PERFORMED = "performed"
@@ -37,10 +39,27 @@ func _ready() -> void:
 			child.transition.connect(transition_to)
 
 
+func _save_what_will_change() -> void:
+	var original_character_position = character.position
+	var original_character_scale_x = character.scale.x
+	
+	cancel_cleanup = func ():
+		character.position = original_character_position
+		character.scale.x = original_character_scale_x
+
+
+func renew() -> void:
+	if reset_uses != null:
+		uses_left = max_uses
+	else:
+		uses_left = mini(max_uses, reset_uses.get_amount())
+
+
 func on_action_ready() -> void:
 	if max_uses != -1 and uses_left == 0:
 		action_cancelled.emit()
 	else:
+		_save_what_will_change()
 		current_state = activated_state
 		activated_state.on_enter(default_args)
 
@@ -56,27 +75,29 @@ func on_action_physics_process(delta: float) -> void:
 
 
 func transition_to(state_name: String, args: Dictionary = {}) -> void:
-	if state_name == current_state.name.to_lower():
-		return
-	
+	if state_name == current_state.name.to_lower(): return
 	current_state.on_exit()
 	
-	if state_name == CANCELLED:
-		current_state = null
-		action_cancelled.emit()
-	elif state_name == PERFORMED:
-		if uses_left != -1: uses_left = maxi(0, uses_left - 1)
-		current_state = null
-		action_performed.emit()
-	else:
-		var new_state = node_states.get(state_name.to_lower())
-		current_state = new_state
-		args.merge(default_args)
-		new_state.on_enter(args)
+	if state_name == CANCELLED: _on_cancelled()
+	elif state_name == PERFORMED: _on_performed()
+	else: _on_transition(state_name, args)
 
 
-func renew() -> void:
-	if reset_uses != null:
-		uses_left = max_uses
-	else:
-		uses_left = mini(max_uses, reset_uses.get_amount())
+func _on_cancelled() -> void:
+	current_state = null
+	cancel_cleanup.call()
+	breadcrumb_tracker.clean_breadcrumbs()
+	action_cancelled.emit()
+
+
+func _on_performed() -> void:
+	if uses_left != -1: uses_left = maxi(0, uses_left - 1)
+	current_state = null
+	action_performed.emit()
+
+
+func _on_transition(state_name: String, args: Dictionary = {}) -> void:
+	var new_state = node_states.get(state_name.to_lower())
+	current_state = new_state
+	args.merge(default_args)
+	new_state.on_enter(args)

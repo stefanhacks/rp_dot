@@ -4,10 +4,11 @@ var a_star_manager: AStarManager
 var breadcrumb_tracker: BreadcrumbTracker
 var character: Character
 var map: Node2D
+
+var timer = 0.0
 var path: Array[Vector2i]
 
-var cells_per_second = 15.0
-var timer = 0.0
+const CELLS_PER_SECOND = 15.0
 
 
 #region State Machine
@@ -16,7 +17,9 @@ func on_process(_delta : float) -> void:
 
 
 func on_physics_process(delta : float) -> void:
-	if path.size() == 0:
+	if Input.is_action_just_pressed('right_click'):
+		transition.emit(ActionStateMachine.CANCELLED)
+	elif path.size() == 0:
 		transition.emit(ActionStateMachine.PERFORMED)
 	elif timer == 0:
 		_take_step()
@@ -37,7 +40,8 @@ func on_enter(args: Dictionary) -> void:
 
 
 func on_exit() -> void:
-	pass
+	timer = 0.0
+	path = []
 
 
 #endregion
@@ -51,4 +55,4 @@ func _take_step() -> void:
 		breadcrumb_tracker.remove_first()
 		character.position = new_position
 		
-		timer = 1.0 / cells_per_second
+		timer = 1.0 / CELLS_PER_SECOND

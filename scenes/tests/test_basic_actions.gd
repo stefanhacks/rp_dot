@@ -10,6 +10,8 @@ var _test_running: bool = false
 
 
 func _ready() -> void:
+	action_walk.action_performed.connect(_stop_action)
+	action_walk.action_cancelled.connect(_cancel_action)
 	_setup_grid()
 
 
@@ -21,14 +23,17 @@ func _setup_grid() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed('click') and _test_running == false:
+	if event.is_action_pressed('left_click') and _test_running == false:
 		_do_action()
 
 
 func _do_action() -> void:
 	_test_running = true
-	action_walk.action_performed.connect(_stop_action)
 	action_walk.on_action_ready()
+
+
+func _cancel_action() -> void:
+	_test_running = false
 
 
 func _stop_action() -> void:

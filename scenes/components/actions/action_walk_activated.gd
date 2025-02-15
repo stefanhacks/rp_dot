@@ -13,8 +13,10 @@ func on_process(_delta : float) -> void:
 
 
 func on_physics_process(_delta : float) -> void:
-	if Input.is_action_just_pressed('click'):
+	if Input.is_action_just_pressed('left_click'):
 		_on_click()
+	elif Input.is_action_just_pressed('right_click'):
+		transition.emit(ActionStateMachine.CANCELLED)
 
 
 func on_next_transitions() -> void:
