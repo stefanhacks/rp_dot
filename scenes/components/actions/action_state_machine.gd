@@ -3,6 +3,8 @@ extends Node
 
 signal action_cancelled
 signal action_performed
+static var CANCELLED = "cancelled"
+static var PERFORMED = "performed"
 
 @export var a_star_manager: AStarManager
 @export var breadcrumb_tracker: BreadcrumbTracker
@@ -21,9 +23,6 @@ var current_state: NodeState
 var uses_left: int
 var cancel_cleanup: Callable
 
-static var CANCELLED = "cancelled"
-static var PERFORMED = "performed"
-
 
 func _ready() -> void:
 	uses_left = max_uses
@@ -37,15 +36,6 @@ func _ready() -> void:
 		if child is NodeState:
 			node_states[child.name.to_lower()] = child
 			child.transition.connect(transition_to)
-
-
-func _save_what_will_change() -> void:
-	var original_character_position = character.position
-	var original_character_scale_x = character.scale.x
-	
-	cancel_cleanup = func ():
-		character.position = original_character_position
-		character.scale.x = original_character_scale_x
 
 
 func renew() -> void:
@@ -81,6 +71,15 @@ func transition_to(state_name: String, args: Dictionary = {}) -> void:
 	if state_name == CANCELLED: _on_cancelled()
 	elif state_name == PERFORMED: _on_performed()
 	else: _on_transition(state_name, args)
+
+
+func _save_what_will_change() -> void:
+	var original_character_position = character.position
+	var original_character_scale_x = character.scale.x
+	
+	cancel_cleanup = func ():
+		character.position = original_character_position
+		character.scale.x = original_character_scale_x
 
 
 func _on_cancelled() -> void:

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://otluy0e6kvrr"]
 
 [ext_resource type="Theme" uid="uid://imywmyclef1c" path="res://themes/test_theme.tres" id="1_uy5wk"]
-[ext_resource type="PackedScene" uid="uid://c5quq2gqt7r1i" path="res://scenes/tests/test_dice_statistic.tscn" id="3_ljxbr"]
-[ext_resource type="PackedScene" uid="uid://d4b7sc8xnr64h" path="res://scenes/tests/test_dice_explosion.tscn" id="3_ody81"]
+[ext_resource type="PackedScene" uid="uid://c5quq2gqt7r1i" path="res://scenes/tests/components/test_dice_statistic.tscn" id="3_ljxbr"]
+[ext_resource type="PackedScene" uid="uid://d4b7sc8xnr64h" path="res://scenes/tests/components/test_dice_explosion.tscn" id="3_ody81"]
 
 [node name="TestDiceTray" type="CenterContainer"]
 anchors_preset = 15

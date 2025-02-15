@@ -5,6 +5,7 @@ extends Node
 signal transition 
 
 
+#region State Machine
 func on_process(_delta : float) -> void:
 	pass
 
@@ -23,3 +24,6 @@ func on_enter(_args: Dictionary) -> void:
 
 func on_exit() -> void:
 	pass
+
+
+#endregion

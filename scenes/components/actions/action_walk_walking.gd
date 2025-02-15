@@ -1,9 +1,4 @@
-extends NodeState
-
-var a_star_manager: AStarManager
-var breadcrumb_tracker: BreadcrumbTracker
-var character: Character
-var map: Node2D
+extends ActionState
 
 var timer = 0.0
 var path: Array[Vector2i]
@@ -12,10 +7,6 @@ const CELLS_PER_SECOND = 15.0
 
 
 #region State Machine
-func on_process(_delta : float) -> void:
-	pass
-
-
 func on_physics_process(delta : float) -> void:
 	if Input.is_action_just_pressed('right_click'):
 		transition.emit(ActionStateMachine.CANCELLED)
@@ -27,15 +18,8 @@ func on_physics_process(delta : float) -> void:
 		timer = max(0.0, timer - delta)
 
 
-func on_next_transitions() -> void:
-	pass
-
-
 func on_enter(args: Dictionary) -> void:
-	a_star_manager = args["a_star_manager"]
-	breadcrumb_tracker = args["breadcrumb_tracker"]
-	character = args["character"]
-	map = args["map"]
+	super(args)
 	path = args["path"]
 
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c5quq2gqt7r1i"]
 
 [ext_resource type="Theme" uid="uid://imywmyclef1c" path="res://themes/test_theme.tres" id="1_dptwe"]
-[ext_resource type="Script" path="res://scenes/tests/test_dice_statistic.gd" id="2_x86b6"]
+[ext_resource type="Script" path="res://scenes/tests/components/test_dice_statistic.gd" id="2_x86b6"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_kf2is"]
 

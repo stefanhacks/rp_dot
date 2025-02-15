@@ -11,7 +11,7 @@ func _ready() -> void:
 
 
 func _test() -> void:
-	for i in range(0, 5):
+	for i in range(5):
 		var point_position = Vector2i(50 * (i + 1) + 200, 100)
 		breadcrumb_tracker.place_breadcrumb(point_position, i as Breadcrumb.Indication)
 
