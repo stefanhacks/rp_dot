@@ -32,7 +32,7 @@ func on_exit() -> void:
 #endregion
 func _strike() -> void:
 	var roll = rogue.roll_for(Ruleset.ActionType.STRIKE)
-	if roll.total > target.stats.get_value(Ruleset.Stat.STRIKE):
+	if roll.total > target.get_total_value(Ruleset.Stat.STRIKE):
 		print("Hit.")
 		target.take_damage(rogue.get_total_value(Ruleset.Stat.DAMAGE))
 	else:

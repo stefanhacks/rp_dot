@@ -4,10 +4,10 @@ extends Control
 @export var bar_color := Color.WHITE
 @export var dice_type: Ruleset.Dice = Ruleset.Dice.D4
 
-var number_of_rolls = 0.0
-var sum_of_rolls = 0.0
-var sum_of_rolls_keep_high = 0.0
-var sum_of_rolls_keep_low = 0.0
+var _number_of_rolls = 0.0
+var _sum_of_rolls = 0.0
+var _sum_of_rolls_keep_high = 0.0
+var _sum_of_rolls_keep_low = 0.0
 var max_bar_size = 260.0
 
 @onready var bar_1: TextureRect = $Bar1
@@ -29,20 +29,20 @@ func _physics_process(_delta: float) -> void:
 
 
 func _update_bar() -> void:
-	number_of_rolls += 1.0
+	_number_of_rolls += 1.0
 	
 	if pure_test == true:
-		sum_of_rolls += randi_range(1, dice_type)
-		sum_of_rolls_keep_low += mini(randi_range(1, dice_type), randi_range(1, dice_type))
-		sum_of_rolls_keep_high += maxi(randi_range(1, dice_type), randi_range(1, dice_type))
+		_sum_of_rolls += randi_range(1, dice_type)
+		_sum_of_rolls_keep_low += mini(randi_range(1, dice_type), randi_range(1, dice_type))
+		_sum_of_rolls_keep_high += maxi(randi_range(1, dice_type), randi_range(1, dice_type))
 	else:
-		sum_of_rolls += DiceTray.roll(dice_type).sum
-		sum_of_rolls_keep_low += DiceTray.roll(dice_type, 0, Ruleset.RollStyle.TWICE_KEEP_LOW).sum
-		sum_of_rolls_keep_high += DiceTray.roll(dice_type, 0, Ruleset.RollStyle.TWICE_KEEP_HIGH).sum
+		_sum_of_rolls += DiceTray.roll(dice_type).sum
+		_sum_of_rolls_keep_low += DiceTray.roll(dice_type, 0, Ruleset.RollStyle.TWICE_KEEP_LOW).sum
+		_sum_of_rolls_keep_high += DiceTray.roll(dice_type, 0, Ruleset.RollStyle.TWICE_KEEP_HIGH).sum
 	
-	var average = float(sum_of_rolls) / number_of_rolls
+	var average = float(_sum_of_rolls) / _number_of_rolls
 	avg_label.text = '%2.2f' % average
 	
-	bar_1.size.y = max_bar_size * (sum_of_rolls_keep_low / number_of_rolls) / float(dice_type)
+	bar_1.size.y = max_bar_size * (_sum_of_rolls_keep_low / _number_of_rolls) / float(dice_type)
 	bar_2.size.y = max_bar_size * average / float(dice_type)
-	bar_3.size.y = max_bar_size * (sum_of_rolls_keep_high / number_of_rolls) / float(dice_type)
+	bar_3.size.y = max_bar_size * (_sum_of_rolls_keep_high / _number_of_rolls) / float(dice_type)

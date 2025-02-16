@@ -2,8 +2,6 @@ extends Control
 
 @export var dice_type: Ruleset.Dice = Ruleset.Dice.D4
 
-var is_exploding = false
-
 @onready var dice_label: Label = $DiceLabel
 @onready var results_label: Label = $Results
 
