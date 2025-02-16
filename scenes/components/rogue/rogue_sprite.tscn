@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ctebg8wk3wgnt"]
 
 [ext_resource type="Texture2D" uid="uid://deap2ti5v54vl" path="res://assets/sprites/32_rogues/rogues.png" id="1_x5w4r"]
-[ext_resource type="PackedScene" uid="uid://mfiwuyr3kerh" path="res://scenes/components/elipse.tscn" id="2_l4cvf"]
+[ext_resource type="PackedScene" uid="uid://mfiwuyr3kerh" path="res://scenes/components/rogue/elipse.tscn" id="2_l4cvf"]
 
 [node name="RogueSprite" type="Sprite2D"]
 z_index = 2

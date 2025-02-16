@@ -21,5 +21,8 @@ func _test_placing() -> void:
 	var region = Rect2i(2, 4, 21, 10)
 	a_star_manager.setup_grid(region, cell_size)
 	
-	var cell_positions = range(6, 18).map(func(value: int): return Vector2i(value, 6)) as Array[Vector2i]
-	breadcrumb_tracker_2.place_breadcrumbs_on_grid(cell_positions, 5, 3)
+	var cell_positions: Array[Vector2i] = []
+	cell_positions.assign((range(6, 18)).map(func(value: int): return Vector2i(value, 6)))
+	var positions = a_star_manager.path_to_centered_position_on_grid(cell_positions as Array[Vector2i])
+
+	breadcrumb_tracker_2.place_breadcrumbs_on_grid(positions, 5, 3)

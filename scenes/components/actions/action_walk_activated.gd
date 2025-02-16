@@ -25,9 +25,9 @@ func _on_click() -> void:
 
 
 func _get_path_to(target_cell: Vector2) -> Array[Vector2i]:
-	var sprite_cell = map.local_to_map(character.global_position)
-	var walk_distance = character.get_total_value(Ruleset.Stat.WALK)
-	var run_distance = character.get_total_value(Ruleset.Stat.RUN)
+	var sprite_cell = map.local_to_map(rogue.global_position)
+	var walk_distance = rogue.get_total_value(Ruleset.Stat.WALK)
+	var run_distance = rogue.get_total_value(Ruleset.Stat.RUN)
 	
 	var path = a_star_manager.get_path_on_grid(sprite_cell, target_cell).slice(1, walk_distance + run_distance + 1)
 	
@@ -42,9 +42,10 @@ func _place_target(new_target_cell: Vector2i) -> void:
 	
 	var path = _get_path_to(new_target_cell)
 	if path.size() > 0:
-		var walk = character.get_total_value(Ruleset.Stat.WALK)
-		var run = character.get_total_value(Ruleset.Stat.RUN)
-		breadcrumb_tracker.place_breadcrumbs_on_grid(path, walk, run)
+		var walk = rogue.get_total_value(Ruleset.Stat.WALK)
+		var run = rogue.get_total_value(Ruleset.Stat.RUN)
+		var positions = a_star_manager.path_to_centered_position_on_grid(path)
+		breadcrumb_tracker.place_breadcrumbs_on_grid(positions, walk, run)
 
 
 func _move_to(new_target_cell: Vector2) -> void:

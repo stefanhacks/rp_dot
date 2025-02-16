@@ -8,7 +8,8 @@ func on_process(_delta: float) -> void:
 
 func on_enter(args: Dictionary) -> void:
 	super(args)
-	cursor_effect.enable_targeting_effect(character.global_position)
+	cursor_effect.enable_targeting_effect(rogue.global_position)
+	entity_controller.entity_clicked.connect(_try_to_target)
 
 
 func on_physics_process(_delta : float) -> void:
@@ -26,4 +27,8 @@ func _on_click() -> void:
 
 func _turn_to_mouse() -> void:
 	var mouse_position = get_viewport().get_mouse_position()
-	character.scale.x = 1 if mouse_position.x < character.position.x else -1
+	rogue.scale.x = 1 if mouse_position.x < rogue.position.x else -1
+
+
+func _try_to_target(node: Node) -> void:
+	print("Targeting ", node)

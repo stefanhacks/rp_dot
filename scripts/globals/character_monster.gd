@@ -1,2 +1,2 @@
 class_name CharacterMonster
-extends Character
+extends CharacterClickable

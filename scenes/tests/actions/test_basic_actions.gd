@@ -1,11 +1,16 @@
 extends Node
 
 @export var a_star_manager: AStarManager
+@export var entity_controller: EntityController
 @export var map_markers: TileMapLayer
 @export var terrain_markers: TileMapLayer
 
 @export var action_walk: ActionStateMachine
 @export var action_strike: ActionStateMachine
+
+@export var rogue_a: Node2D
+@export var rogue_b: Node2D
+
 
 var _current_action: ActionStateMachine
 var _test_running: bool = false
@@ -15,6 +20,8 @@ var _test_stage = 0
 func _ready() -> void:
 	_setup_grid()
 	_current_action = action_walk
+	entity_controller.add_playable(rogue_a)
+	entity_controller.add_playable(rogue_b)
 
 
 func _setup_grid() -> void:

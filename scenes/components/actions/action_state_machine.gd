@@ -6,10 +6,12 @@ signal action_performed
 static var CANCELLED = "cancelled"
 static var PERFORMED = "performed"
 
+@export var rogue: Rogue
+
 @export var a_star_manager: AStarManager
 @export var breadcrumb_tracker: BreadcrumbTracker
 @export var cursor_effect: CursorEffect
-@export var character: CharacterPlayable
+@export var entity_controller: EntityController
 @export var map: Node2D
 
 @export var max_uses: int = -1
@@ -31,9 +33,11 @@ func _ready() -> void:
 		"a_star_manager": a_star_manager,
 		"breadcrumb_tracker": breadcrumb_tracker,
 		"cursor_effect": cursor_effect,
-		"character": character,
+		"rogue": rogue,
+		"entity_controller": entity_controller,
 		"map": map,
 	}
+	
 	for child in get_children():
 		if child is NodeState:
 			node_states[child.name.to_lower()] = child
@@ -76,12 +80,12 @@ func transition_to(state_name: String, args: Dictionary = {}) -> void:
 
 
 func _save_what_will_change() -> void:
-	var original_character_position = character.position
-	var original_character_scale_x = character.scale.x
+	var original_rogue_position = rogue.position
+	var original_rogue_scale_x = rogue.scale.x
 	
 	cancel_cleanup = func ():
-		character.position = original_character_position
-		character.scale.x = original_character_scale_x
+		rogue.position = original_rogue_position
+		rogue.scale.x = original_rogue_scale_x
 
 
 func _on_cancelled() -> void:

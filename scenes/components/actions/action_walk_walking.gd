@@ -33,10 +33,10 @@ func _take_step() -> void:
 	if path.size() > 0:
 		var new_step = path.pop_front()
 		var new_position = a_star_manager.get_centered_position_on_grid(new_step)
-		if character.position.x != new_position.x:
-			character.scale.x = -1 if character.position.x <= new_position.x else 1
+		if rogue.position.x != new_position.x:
+			rogue.scale.x = -1 if rogue.position.x <= new_position.x else 1
 		
 		breadcrumb_tracker.remove_first()
-		character.position = new_position
+		rogue.position = new_position
 		
 		timer = 1.0 / CELLS_PER_SECOND

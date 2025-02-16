@@ -1,63 +1,48 @@
-[gd_scene load_steps=14 format=4 uid="uid://cwd1fmdtxkeek"]
+[gd_scene load_steps=10 format=4 uid="uid://cwd1fmdtxkeek"]
 
 [ext_resource type="Script" path="res://scenes/tests/actions/test_basic_actions.gd" id="1_l5pf0"]
 [ext_resource type="PackedScene" uid="uid://cnqnrq8tra84i" path="res://scenes/components/a_star/a_star_manager.tscn" id="2_gu0ca"]
+[ext_resource type="PackedScene" uid="uid://lmran6kp8w1b" path="res://scenes/components/controllers/entity_controller.tscn" id="3_6r67k"]
 [ext_resource type="PackedScene" uid="uid://70ddiho573n2" path="res://scenes/components/breadcrumbs/breadcrumb_tracker.tscn" id="3_rbaol"]
 [ext_resource type="PackedScene" uid="uid://djaybyugddcaq" path="res://scenes/components/actions/action_walk.tscn" id="4_0rdgo"]
 [ext_resource type="PackedScene" uid="uid://dkvl1ux2lom5d" path="res://scenes/components/cursor/cursor_effect.tscn" id="4_ehh51"]
 [ext_resource type="TileSet" uid="uid://cd5cv4b67p852" path="res://tilesets/tileset.tres" id="4_we5kv"]
-[ext_resource type="PackedScene" uid="uid://ctebg8wk3wgnt" path="res://scenes/components/rogue_sprite.tscn" id="6_l0nun"]
 [ext_resource type="PackedScene" uid="uid://d27p857mqaqhp" path="res://scenes/components/actions/action_strike.tscn" id="6_n6dts"]
-[ext_resource type="Script" path="res://scripts/globals/character_playable.gd" id="7_tjvjp"]
-[ext_resource type="Script" path="res://scripts/structs/knack.gd" id="8_tyffb"]
-[ext_resource type="Script" path="res://scripts/structs/stats_playable.gd" id="9_42lqj"]
+[ext_resource type="PackedScene" uid="uid://d1oynlnsap1pw" path="res://scenes/components/rogue/rogue.tscn" id="9_k82mr"]
 
-[sub_resource type="Resource" id="Resource_vnilb"]
-script = ExtResource("8_tyffb")
-strike = 0
-defend = 0
-affect = 0
-resist = 0
-
-[sub_resource type="Resource" id="Resource_ntxsc"]
-script = ExtResource("9_42lqj")
-strike_bonus = 0
-defend_bonus = 0
-affect_bonus = 0
-resist_bonus = 0
-max_health = 0
-surge = 0
-walk = 4
-run = 3
-damage = 0
-
-[node name="TestBasicActions" type="Node2D" node_paths=PackedStringArray("a_star_manager", "map_markers", "terrain_markers", "action_walk", "action_strike")]
+[node name="TestBasicActions" type="Node2D" node_paths=PackedStringArray("a_star_manager", "entity_controller", "map_markers", "terrain_markers", "action_walk", "action_strike", "rogue_a", "rogue_b")]
 script = ExtResource("1_l5pf0")
 a_star_manager = NodePath("AStarManager")
+entity_controller = NodePath("EntityController")
 map_markers = NodePath("MapMarkers")
 terrain_markers = NodePath("TerrainMarkers")
 action_walk = NodePath("ActionWalk")
 action_strike = NodePath("ActionStrike")
+rogue_a = NodePath("Rogue")
+rogue_b = NodePath("Rogue2")
 
 [node name="AStarManager" parent="." instance=ExtResource("2_gu0ca")]
 
-[node name="BreadcrumbTracker" parent="." node_paths=PackedStringArray("a_star_manager") instance=ExtResource("3_rbaol")]
-a_star_manager = NodePath("../AStarManager")
+[node name="EntityController" parent="." instance=ExtResource("3_6r67k")]
+
+[node name="BreadcrumbTracker" parent="." instance=ExtResource("3_rbaol")]
 
 [node name="CursorEffect" parent="." instance=ExtResource("4_ehh51")]
 
-[node name="ActionWalk" parent="." node_paths=PackedStringArray("a_star_manager", "breadcrumb_tracker", "cursor_effect", "character", "map") instance=ExtResource("4_0rdgo")]
+[node name="ActionWalk" parent="." node_paths=PackedStringArray("rogue", "a_star_manager", "breadcrumb_tracker", "cursor_effect", "entity_controller", "map") instance=ExtResource("4_0rdgo")]
+rogue = NodePath("../Rogue")
 a_star_manager = NodePath("../AStarManager")
 breadcrumb_tracker = NodePath("../BreadcrumbTracker")
 cursor_effect = NodePath("../CursorEffect")
-character = NodePath("../Rogue")
+entity_controller = NodePath("../EntityController")
 map = NodePath("../MapMarkers")
 
-[node name="ActionStrike" parent="." node_paths=PackedStringArray("a_star_manager", "breadcrumb_tracker", "cursor_effect", "character", "map") instance=ExtResource("6_n6dts")]
+[node name="ActionStrike" parent="." node_paths=PackedStringArray("rogue", "a_star_manager", "breadcrumb_tracker", "cursor_effect", "entity_controller", "map") instance=ExtResource("6_n6dts")]
+rogue = NodePath("../Rogue")
 a_star_manager = NodePath("../AStarManager")
 breadcrumb_tracker = NodePath("../BreadcrumbTracker")
 cursor_effect = NodePath("../CursorEffect")
-character = NodePath("../Rogue")
+entity_controller = NodePath("../EntityController")
 map = NodePath("../MapMarkers")
 
 [node name="Background" type="TileMapLayer" parent="."]
@@ -77,9 +62,8 @@ modulate = Color(0, 1, 0, 0.545098)
 tile_map_data = PackedByteArray("AAAMAAUAAQAAAAAAAQAMAAwAAQAAAAAAAQALAAQAAQAAAAAAAQAMAAQAAQAAAAAAAQANAAUAAQAAAAAAAQANAAYAAQAAAAAAAQANAAcAAQAAAAAAAQALAAoAAQAAAAAAAQALAAsAAQAAAAAAAQALAAwAAQAAAAAAAQANAA0AAQAAAAAAAQAMAA0AAQAAAAAAAQALAA0AAQAAAAAAAQAKAA0AAQAAAAAAAQAJAA0AAQAAAAAAAQAIAA0AAQAAAAAAAQADAA0AAQAAAAAAAQACAA0AAQAAAAAAAQACAAwAAQAAAAAAAQACAAsAAQAAAAAAAQACAAoAAQAAAAAAAQACAAkAAQAAAAAAAQARAA0AAQAAAAAAAQASAA0AAQAAAAAAAQATAA0AAQAAAAAAAQAUAA0AAQAAAAAAAQAWAAwAAQAAAAAAAQAWAAsAAQAAAAAAAQAWAAoAAQAAAAAAAQAWAAkAAQAAAAAAAQAVAAoAAQAAAAAAAQAUAAoAAQAAAAAAAQAUAAsAAQAAAAAAAQAVAAsAAQAAAAAAAQAWAAYAAQAAAAAAAQAWAAUAAQAAAAAAAQAWAAQAAQAAAAAAAQAVAAQAAQAAAAAAAQAUAAQAAQAAAAAAAQATAAQAAQAAAAAAAQASAAQAAQAAAAAAAQAGAAgAAQAAAAAAAQAGAAkAAQAAAAAAAQAHAAgAAQAAAAAAAQAHAAcAAQAAAAAAAQAGAAcAAQAAAAAAAQASAAYAAQAAAAAAAQASAAcAAQAAAAAAAQAQAAsAAQAAAAAAAQAQAAoAAQAAAAAAAQAPAAoAAQAAAAAAAQAOAAoAAQAAAAAAAQANAAoAAQAAAAAAAQANAAkAAQAAAAAAAQAOAAkAAQAAAAAAAQAPAAkAAQAAAAAAAQACAAUAAQAAAAAAAQADAAQAAQAAAAAAAQA=")
 tile_set = ExtResource("4_we5kv")
 
-[node name="Rogue" parent="." instance=ExtResource("6_l0nun")]
+[node name="Rogue" parent="." instance=ExtResource("9_k82mr")]
 position = Vector2(304, 272)
-frame = 1
-script = ExtResource("7_tjvjp")
-knack = SubResource("Resource_vnilb")
-stats = SubResource("Resource_ntxsc")
+
+[node name="Rogue2" parent="." instance=ExtResource("9_k82mr")]
+position = Vector2(368, 240)

@@ -4,7 +4,6 @@ extends Node
 const BREADCRUMB = preload("res://scenes/components/breadcrumbs/breadcrumb.tscn")
 const BREADCRUMB_AMOUNT = 10
 
-@export var a_star_manager: AStarManager
 @export var walk_color: Color = Color.MEDIUM_SPRING_GREEN
 @export var run_color: Color = Color.CORAL
 @export var x_color: Color = Color.REBECCA_PURPLE
@@ -60,7 +59,7 @@ func place_breadcrumb(at_position: Vector2i, indication: Breadcrumb.Indication) 
 	breadcrumb.modulate = walk_color if is_walk else run_color if is_run else x_color
 
 
-func place_breadcrumbs_on_grid(cell_positions: Array, walk_limit: int, run_limit: int) -> void:
+func place_breadcrumbs_on_grid(breadcrumb_positions: Array, walk_limit: int, run_limit: int) -> void:
 	clean_breadcrumbs()
 	
 	var index = 0
@@ -72,7 +71,6 @@ func place_breadcrumbs_on_grid(cell_positions: Array, walk_limit: int, run_limit
 		elif walk_index == walk_limit + run_limit + 1: return Breadcrumb.Indication.TARGET
 		else: return Breadcrumb.Indication.MARK
 	
-	for cell in cell_positions:
+	for position in breadcrumb_positions:
 		index += 1
-		var breadcrumb_position = a_star_manager.get_centered_position_on_grid(cell)
-		place_breadcrumb(breadcrumb_position, get_indication.call(index))
+		place_breadcrumb(position, get_indication.call(index))

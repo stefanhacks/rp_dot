@@ -7,6 +7,8 @@ atlas = ExtResource("1_qov6w")
 
 [node name="CursorBreadcrumb" type="Sprite2D"]
 top_level = true
+z_index = 50
+y_sort_enabled = true
 texture = SubResource("AtlasTexture_uwcvs")
 hframes = 3
 vframes = 2

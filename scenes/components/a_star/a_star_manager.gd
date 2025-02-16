@@ -48,3 +48,11 @@ func get_position_on_grid(from_cell: Vector2i) -> Vector2i:
 func get_centered_position_on_grid(from_cell: Vector2i) -> Vector2i:
 	# Essentially, returns the center of a cell based on its size.
 	return floor(get_position_on_grid(from_cell) + Vector2i(grid.cell_size / 2))
+
+
+func path_to_centered_position_on_grid(path: Array[Vector2i]) -> Array[Vector2i]:
+	var positions: Array[Vector2i] = []
+	for cell in path:
+		positions.append(get_centered_position_on_grid(cell))
+
+	return positions
