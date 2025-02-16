@@ -1,7 +1,7 @@
 extends Node
 
 @export var a_star_manager: AStarManager
-@export var breadcrumb_tracker: BreadcrumbTracker
+@export var breadcrumb_manager: BreadcrumbManager
 
 @export var map_markers: TileMapLayer
 @export var terrain_markers: TileMapLayer
@@ -52,7 +52,7 @@ func _move_to(new_target_cell: Vector2) -> void:
 	if path.size() > 0:
 		walking_path = path
 		var positions = a_star_manager.path_to_centered_position_on_grid(path)
-		breadcrumb_tracker.place_breadcrumbs_on_grid(positions, 5, 5)
+		breadcrumb_manager.place_breadcrumbs_on_grid(positions, 5, 5)
 		_take_step()
 
 
@@ -63,7 +63,7 @@ func _take_step() -> void:
 		if test_sprite.position.x != new_position.x:
 			test_sprite.scale.x = -1 if test_sprite.position.x <= new_position.x else 1
 		
-		breadcrumb_tracker.remove_first()
+		breadcrumb_manager.remove_first()
 		test_sprite.position = new_position
 		
 		walking_timer = get_tree().create_timer(1.0 / cells_per_second)

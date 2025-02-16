@@ -2,10 +2,10 @@ class_name ActionState
 extends NodeState
 
 var a_star_manager: AStarManager
-var breadcrumb_tracker: BreadcrumbTracker
-var cursor_effect: CursorEffect
+var breadcrumb_manager: BreadcrumbManager
+var cursor_effect_manager: CursorEffectManager
+var entity_manager: EntityManager
 var rogue: Rogue
-var entity_controller: EntityController
 var map: Node2D
 
 
@@ -23,12 +23,12 @@ func on_next_transitions() -> void:
 
 
 func on_enter(args: Dictionary) -> void:
-	a_star_manager = args["a_star_manager"]
-	breadcrumb_tracker = args["breadcrumb_tracker"]
-	cursor_effect = args["cursor_effect"]
-	rogue = args["rogue"]
-	entity_controller = args["entity_controller"]
-	map = args["map"]
+	a_star_manager = args['a_star_manager']
+	breadcrumb_manager = args['breadcrumb_manager']
+	cursor_effect_manager = args['cursor_effect_manager']
+	entity_manager = args['entity_manager']
+	rogue = args['rogue']
+	map = args['map']
 
 
 func on_exit() -> void:

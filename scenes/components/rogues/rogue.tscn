@@ -1,13 +1,13 @@
 [gd_scene load_steps=8 format=3 uid="uid://d1oynlnsap1pw"]
 
-[ext_resource type="Script" path="res://scenes/components/rogue/rogue.gd" id="1_sgvfk"]
+[ext_resource type="Script" path="res://scenes/components/rogues/rogue.gd" id="1_sgvfk"]
 [ext_resource type="Script" path="res://scripts/structs/knack.gd" id="2_abglu"]
 [ext_resource type="Script" path="res://scripts/structs/stats_playable.gd" id="3_w7ail"]
-[ext_resource type="PackedScene" uid="uid://ctebg8wk3wgnt" path="res://scenes/components/rogue/rogue_sprite.tscn" id="4_upnfl"]
+[ext_resource type="PackedScene" uid="uid://ctebg8wk3wgnt" path="res://scenes/components/rogues/rogue_sprite.tscn" id="4_upnfl"]
 
 [sub_resource type="Resource" id="Resource_vxeki"]
 script = ExtResource("2_abglu")
-strike = 0
+strike = 8
 defend = 0
 affect = 0
 resist = 0
@@ -22,7 +22,7 @@ max_health = 0
 surge = 0
 walk = 4
 run = 3
-damage = 0
+damage = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0714u"]
 size = Vector2(32, 32)

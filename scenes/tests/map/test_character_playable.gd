@@ -4,15 +4,15 @@ extends Node2D
 
 func _ready() -> void:
 	_test_attack()
-	print(" ")
+	print(' ')
 	_test_health()
-	print(" ")
+	print(' ')
 	_test_trophy(Ruleset.Stat.STRIKE)
 	_test_trophy(Ruleset.Stat.MAX_HEALTH)
 	
 
 func _test_attack() -> void:
-	print ("# Testing Strike")
+	print ('# Testing Strike')
 	var action = Ruleset.ActionType.STRIKE
 	var stat = Ruleset.action_to_stat(action)
 	rogue.stats.set_value(stat, -1)
@@ -28,21 +28,21 @@ func _test_attack() -> void:
 	
 	var roll = rogue.roll_for(action)
 	
-	print("Strike Knack: D", rogue.knack.get_value(action))
-	print("Strike Bonus: ", rogue.stats.get_value(stat))
-	print("Strike Enchants: ", rogue.get_enchants_total(stat))
-	print("Strike Trophies: ", rogue.get_trophies_total(stat))
+	print('Strike Knack: D', rogue.knack.get_value(action))
+	print('Strike Bonus: ', rogue.stats.get_value(stat))
+	print('Strike Enchants: ', rogue.get_enchants_total(stat))
+	print('Strike Trophies: ', rogue.get_trophies_total(stat))
 	
-	print("-")
+	print('-')
 	
-	print("Strike Roll: ", roll.rolls[0])
-	print("Strike Stat: ", rogue.get_total_value(stat))
-	print("Strike Total: ", roll.total)
+	print('Strike Roll: ', roll.rolls[0])
+	print('Strike Stat: ', rogue.get_total_value(stat))
+	print('Strike Total: ', roll.total)
 	assert(roll.total == rogue.get_total_value(stat) + roll.rolls[0])
 
 
 func _test_health() -> void:
-	print ("# Testing Health")
+	print ('# Testing Health')
 	_assert_alive(false)
 	rogue.stats.max_health = 10
 	var max_health = rogue.stats.get_value(Ruleset.Stat.MAX_HEALTH)
@@ -58,22 +58,22 @@ func _test_health() -> void:
 
 
 func _assert_alive(expected_value: bool) -> void:
-	print("Is alive." if rogue.is_alive else "Is dead.")
+	print('Is alive.' if rogue.is_alive else 'Is dead.')
 	assert(rogue.is_alive == expected_value)
 
 
 func _on_rogue_health_reached_zero() -> void:
-	print("0 HP reached.")
+	print('0 HP reached.')
 
 
 func _test_trophy(stat: Ruleset.Stat) -> void:
-	print ("# Testing Trophy for Index %s" % stat)
+	print ('# Testing Trophy for Index %s' % stat)
 	
 	var value = rogue.stats.get_value(stat)
 	var enchants_mods = rogue.get_enchants_total(stat)
 	var trophies_mods = rogue.get_trophies_total(stat)
 	var full_value = rogue.get_total_value(stat)
 	
-	print(full_value, " = ", value, ' + ', enchants_mods, " + ", trophies_mods)
+	print(full_value, ' = ', value, ' + ', enchants_mods, ' + ', trophies_mods)
 	assert(full_value ==  value + enchants_mods + trophies_mods)
 	

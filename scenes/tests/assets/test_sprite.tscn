@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2tlfh7gjelsx"]
 
-[ext_resource type="PackedScene" uid="uid://mfiwuyr3kerh" path="res://scenes/components/rogue/elipse.tscn" id="1_gjk0a"]
-[ext_resource type="PackedScene" uid="uid://ctebg8wk3wgnt" path="res://scenes/components/rogue/rogue_sprite.tscn" id="2_v5i2a"]
+[ext_resource type="PackedScene" uid="uid://mfiwuyr3kerh" path="res://scenes/components/rogues/elipse.tscn" id="1_gjk0a"]
+[ext_resource type="PackedScene" uid="uid://ctebg8wk3wgnt" path="res://scenes/components/rogues/rogue_sprite.tscn" id="2_v5i2a"]
 
 [node name="TestSprite" type="Node2D"]
 

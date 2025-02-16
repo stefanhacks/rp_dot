@@ -1,4 +1,4 @@
-class_name CharacterPlayable
+class_name CharacterRogue
 extends CharacterClickable
 
 # Core Knacks

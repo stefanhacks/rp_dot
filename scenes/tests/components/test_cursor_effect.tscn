@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cpdyik47ywx3r"]
 
 [ext_resource type="Script" path="res://scenes/tests/components/test_cursor_effect.gd" id="1_onbv5"]
-[ext_resource type="PackedScene" uid="uid://dkvl1ux2lom5d" path="res://scenes/components/cursor/cursor_effect.tscn" id="2_k1gq4"]
+[ext_resource type="PackedScene" uid="uid://dkvl1ux2lom5d" path="res://scenes/components/cursor/cursor_effect_manager.tscn" id="2_k1gq4"]
 
 [node name="TestCursorEffect" type="Node2D"]
 script = ExtResource("1_onbv5")

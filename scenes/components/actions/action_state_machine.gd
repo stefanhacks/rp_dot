@@ -3,15 +3,15 @@ extends Node
 
 signal action_cancelled
 signal action_performed
-static var CANCELLED = "cancelled"
-static var PERFORMED = "performed"
+static var CANCELLED = 'cancelled'
+static var PERFORMED = 'performed'
 
 @export var rogue: Rogue
 
 @export var a_star_manager: AStarManager
-@export var breadcrumb_tracker: BreadcrumbTracker
-@export var cursor_effect: CursorEffect
-@export var entity_controller: EntityController
+@export var breadcrumb_manager: BreadcrumbManager
+@export var cursor_effect_manager: CursorEffectManager
+@export var entity_manager: EntityManager
 @export var map: Node2D
 
 @export var max_uses: int = -1
@@ -30,12 +30,12 @@ var cancel_cleanup: Callable
 func _ready() -> void:
 	uses_left = max_uses
 	default_args = {
-		"a_star_manager": a_star_manager,
-		"breadcrumb_tracker": breadcrumb_tracker,
-		"cursor_effect": cursor_effect,
-		"rogue": rogue,
-		"entity_controller": entity_controller,
-		"map": map,
+		'a_star_manager': a_star_manager,
+		'breadcrumb_manager': breadcrumb_manager,
+		'cursor_effect_manager': cursor_effect_manager,
+		'entity_manager': entity_manager,
+		'rogue': rogue,
+		'map': map,
 	}
 	
 	for child in get_children():
@@ -91,7 +91,7 @@ func _save_what_will_change() -> void:
 func _on_cancelled() -> void:
 	current_state = null
 	cancel_cleanup.call()
-	breadcrumb_tracker.clean_breadcrumbs()
+	breadcrumb_manager.clean_breadcrumbs()
 	action_cancelled.emit()
 
 

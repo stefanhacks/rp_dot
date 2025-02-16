@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://b47j72ocbnsfg"]
+
+[ext_resource type="Script" path="res://scenes/components/foes/foe.gd" id="1_kkhqb"]
+[ext_resource type="Script" path="res://scripts/structs/stats_foe.gd" id="2_3wbo7"]
+[ext_resource type="PackedScene" uid="uid://d0c2e4lau52rn" path="res://scenes/components/foes/foe_sprite.tscn" id="2_yvvrv"]
+
+[sub_resource type="Resource" id="Resource_5t036"]
+script = ExtResource("2_3wbo7")
+to_strike_peril = 4
+to_defend_peril = 0
+to_affect_peril = 0
+to_resist_peril = 0
+max_health = 2
+surge = 0
+walk = 0
+run = 0
+damage = 0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0714u"]
+size = Vector2(32, 32)
+
+[node name="Foe" type="Node2D"]
+script = ExtResource("1_kkhqb")
+stats = SubResource("Resource_5t036")
+
+[node name="FoeSprite" parent="." instance=ExtResource("2_yvvrv")]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_0714u")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

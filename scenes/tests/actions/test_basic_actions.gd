@@ -1,7 +1,7 @@
 extends Node
 
 @export var a_star_manager: AStarManager
-@export var entity_controller: EntityController
+@export var entity_manager: EntityManager
 @export var map_markers: TileMapLayer
 @export var terrain_markers: TileMapLayer
 
@@ -10,6 +10,7 @@ extends Node
 
 @export var rogue_a: Node2D
 @export var rogue_b: Node2D
+@export var foe_a: Node2D
 
 
 var _current_action: ActionStateMachine
@@ -20,8 +21,9 @@ var _test_stage = 0
 func _ready() -> void:
 	_setup_grid()
 	_current_action = action_walk
-	entity_controller.add_playable(rogue_a)
-	entity_controller.add_playable(rogue_b)
+	entity_manager.add_rogue(rogue_a)
+	entity_manager.add_rogue(rogue_b)
+	entity_manager.add_foe(foe_a)
 
 
 func _setup_grid() -> void:
@@ -53,15 +55,20 @@ func _do_action() -> void:
 func _cancel_action() -> void:
 	_disconnect_current_action()
 	_test_running = false
+	_next_test()
 
 
 func _stop_action() -> void:
 	_disconnect_current_action()
 	_test_running = false
-	_test_stage = (_test_stage + 1) % 2
-	_current_action = action_walk if _test_stage == 0 else action_strike
+	_next_test()
 
 
 func _disconnect_current_action() -> void:
 	_current_action.action_performed.disconnect(_stop_action)
 	_current_action.action_cancelled.disconnect(_cancel_action)
+
+
+func _next_test() -> void:
+	_test_stage = (_test_stage + 1) % 2
+	_current_action = action_walk if _test_stage == 0 else action_strike

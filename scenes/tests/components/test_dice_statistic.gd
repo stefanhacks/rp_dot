@@ -19,7 +19,7 @@ var max_bar_size = 260.0
 
 
 func _ready() -> void:
-	dice_label.text = "D%s" % dice_type
+	dice_label.text = 'D%s' % dice_type
 	modulate = bar_color
 
 
@@ -41,7 +41,7 @@ func _update_bar() -> void:
 		sum_of_rolls_keep_high += DiceTray.roll(dice_type, 0, Ruleset.RollStyle.TWICE_KEEP_HIGH).sum
 	
 	var average = float(sum_of_rolls) / number_of_rolls
-	avg_label.text = "%2.2f" % average
+	avg_label.text = '%2.2f' % average
 	
 	bar_1.size.y = max_bar_size * (sum_of_rolls_keep_low / number_of_rolls) / float(dice_type)
 	bar_2.size.y = max_bar_size * average / float(dice_type)

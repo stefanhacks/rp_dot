@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://bg3ju0l8b7rbl"]
 
 [ext_resource type="Script" path="res://scenes/tests/map/test_character_playable.gd" id="1_sarrr"]
-[ext_resource type="Script" path="res://scripts/globals/character_playable.gd" id="2_jusay"]
+[ext_resource type="Script" path="res://scripts/globals/character_rogue.gd" id="2_jusay"]
 [ext_resource type="Script" path="res://scripts/structs/knack.gd" id="3_he6h0"]
-[ext_resource type="Script" path="res://scripts/structs/stats_monster.gd" id="4_pb0c8"]
+[ext_resource type="Script" path="res://scripts/structs/stats_foe.gd" id="4_pb0c8"]
 
 [sub_resource type="Resource" id="Resource_o475c"]
 script = ExtResource("3_he6h0")

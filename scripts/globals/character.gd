@@ -10,6 +10,7 @@ signal health_reached_zero
 @export var _enchants: Array[ModifierTemporary]
 
 # Vars
+var id: int
 var current_health: int
 var is_alive: bool: 
 	get(): return current_health > 0
@@ -24,7 +25,7 @@ func heal(amount: int = stats.get_value(Ruleset.Stat.MAX_HEALTH)) -> void:
 func take_damage(amount: int) -> void:
 	current_health = max(0, current_health - amount)
 	if current_health == 0:
-		health_reached_zero.emit()
+		health_reached_zero.emit(self)
 
 
 func get_total_value(stat: Ruleset.Stat) -> int:

@@ -1,7 +1,7 @@
-class_name CursorEffect
+class_name CursorEffectManager
 extends Node
 
-const CURSOR_BREADCRUMB = preload("res://scenes/components/cursor/cursor_breadcrumb.tscn")
+const CURSOR_BREADCRUMB = preload('res://scenes/components/cursor/cursor_breadcrumb.tscn')
 const SEGMENT_AMOUNT = 15.0
 
 var effect: Effect = Effect.NONE

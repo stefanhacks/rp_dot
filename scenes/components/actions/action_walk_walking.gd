@@ -20,7 +20,7 @@ func on_physics_process(delta : float) -> void:
 
 func on_enter(args: Dictionary) -> void:
 	super(args)
-	path = args["path"]
+	path = args['path']
 
 
 func on_exit() -> void:
@@ -36,7 +36,7 @@ func _take_step() -> void:
 		if rogue.position.x != new_position.x:
 			rogue.scale.x = -1 if rogue.position.x <= new_position.x else 1
 		
-		breadcrumb_tracker.remove_first()
+		breadcrumb_manager.remove_first()
 		rogue.position = new_position
 		
 		timer = 1.0 / CELLS_PER_SECOND

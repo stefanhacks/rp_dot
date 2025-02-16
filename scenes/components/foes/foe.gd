@@ -1,20 +1,20 @@
 @tool
-class_name Rogue
-extends CharacterPlayable
+class_name Foe
+extends CharacterFoe
 
 @export var sprite_index: int:
 	set(value):
-		if (rogue_sprite == null): return
-		var max_value = (rogue_sprite.vframes * rogue_sprite.hframes) - 1
+		if (foe_sprite == null): return
+		var max_value = (foe_sprite.vframes * foe_sprite.hframes) - 1
 		sprite_index = clamp(value, 0, max_value)
-		rogue_sprite.frame = sprite_index
+		foe_sprite.frame = sprite_index
 
-@onready var rogue_sprite: Sprite2D = $RogueSprite
+@onready var foe_sprite: Sprite2D = $FoeSprite
 @onready var area_2d: Area2D = $Area2D
 
 
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event.is_action_released("left_click"): clicked.emit(self)
+	if event.is_action_released('left_click'): clicked.emit(self)
 
 
 func _on_area_2d_mouse_entered() -> void:

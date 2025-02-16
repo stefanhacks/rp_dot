@@ -1,5 +1,5 @@
 @tool
-class_name StatsPlayable
+class_name StatsRogue
 extends Stats
 
 # Static bonus for every action type.

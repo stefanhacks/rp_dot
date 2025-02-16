@@ -45,8 +45,8 @@ func _place_target(new_target_cell: Vector2i) -> void:
 		var walk = rogue.get_total_value(Ruleset.Stat.WALK)
 		var run = rogue.get_total_value(Ruleset.Stat.RUN)
 		var positions = a_star_manager.path_to_centered_position_on_grid(path)
-		breadcrumb_tracker.place_breadcrumbs_on_grid(positions, walk, run)
+		breadcrumb_manager.place_breadcrumbs_on_grid(positions, walk, run)
 
 
 func _move_to(new_target_cell: Vector2) -> void:
-	transition.emit("walking", { 'path': _get_path_to(new_target_cell) })
+	transition.emit('walking', { 'path': _get_path_to(new_target_cell) })

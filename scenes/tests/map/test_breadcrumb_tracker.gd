@@ -1,8 +1,8 @@
 extends Node2D
 
 @onready var a_star_manager: AStarManager = $AStarManager
-@onready var breadcrumb_tracker: BreadcrumbTracker = $BreadcrumbTracker
-@onready var breadcrumb_tracker_2: BreadcrumbTracker = $BreadcrumbTracker2
+@onready var breadcrumb_manager: BreadcrumbManager = $BreadcrumbManager
+@onready var breadcrumb_manager_2: BreadcrumbManager = $BreadcrumbManager2
 
 
 func _ready() -> void:
@@ -13,7 +13,7 @@ func _ready() -> void:
 func _test() -> void:
 	for i in range(5):
 		var point_position = Vector2i(50 * (i + 1) + 200, 100)
-		breadcrumb_tracker.place_breadcrumb(point_position, i as Breadcrumb.Indication)
+		breadcrumb_manager.place_breadcrumb(point_position, i as Breadcrumb.Indication)
 
 
 func _test_placing() -> void:
@@ -25,4 +25,4 @@ func _test_placing() -> void:
 	cell_positions.assign((range(6, 18)).map(func(value: int): return Vector2i(value, 6)))
 	var positions = a_star_manager.path_to_centered_position_on_grid(cell_positions as Array[Vector2i])
 
-	breadcrumb_tracker_2.place_breadcrumbs_on_grid(positions, 5, 3)
+	breadcrumb_manager_2.place_breadcrumbs_on_grid(positions, 5, 3)

@@ -1,7 +1,7 @@
-class_name BreadcrumbTracker
+class_name BreadcrumbManager
 extends Node
 
-const BREADCRUMB = preload("res://scenes/components/breadcrumbs/breadcrumb.tscn")
+const BREADCRUMB = preload('res://scenes/components/breadcrumbs/breadcrumb.tscn')
 const BREADCRUMB_AMOUNT = 10
 
 @export var walk_color: Color = Color.MEDIUM_SPRING_GREEN
