@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkvl1ux2lom5d"]
+
+[ext_resource type="Script" path="res://scenes/components/cursor/cursor_effect_manager.gd" id="2_lb2ep"]
+
+[node name="CursorEffectManager" type="Node"]
+script = ExtResource("2_lb2ep")

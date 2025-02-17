@@ -18,7 +18,7 @@ enum RollStyle {
 
 enum Stat {
 	MAX_HEALTH,
-	MOVE,
+	WALK,
 	RUN,
 	DAMAGE,
 	SURGE,
@@ -46,5 +46,5 @@ func action_to_stat(action: ActionType) -> Stat:
 		ActionType.RESIST:
 			return Stat.RESIST
 		_: 
-			push_error("Non valid action provided in action_to_stat call.")
+			push_error('Non valid action provided in action_to_stat call.')
 			return Stat.MAX_HEALTH

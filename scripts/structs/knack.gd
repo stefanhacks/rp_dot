@@ -6,7 +6,7 @@ extends Resource
 @export var strike: Ruleset.Dice: # Basic attack die.
 	set(value): set_value(Ruleset.ActionType.STRIKE, value)
 	get(): return get_value(Ruleset.ActionType.STRIKE)
-@export var defend: Ruleset.Dice: # Basic protect self from monsters die.
+@export var defend: Ruleset.Dice: # Basic protect self from foes die.
 	set(value): set_value(Ruleset.ActionType.DEFEND, value)
 	get(): return get_value(Ruleset.ActionType.DEFEND)
 @export var affect: Ruleset.Dice: # Basic interaction with world die.

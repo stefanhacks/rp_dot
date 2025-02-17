@@ -1,18 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmg3f3mxy8kfd"]
+[gd_scene load_steps=4 format=3 uid="uid://dmg3f3mxy8kfd"]
 
 [ext_resource type="Texture2D" uid="uid://m1s67eun4f01" path="res://assets/sprites/target.png" id="1_qgqo4"]
 [ext_resource type="Script" path="res://scenes/components/breadcrumbs/breadcrumb.gd" id="2_wob8x"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ufx1w"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwcvs"]
 atlas = ExtResource("1_qgqo4")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0p21n"]
-atlas = ExtResource("1_qgqo4")
-region = Rect2(16, 16, 16, 16)
 
 [node name="AStarBreadcrumb" type="Sprite2D"]
-texture = SubResource("AtlasTexture_ufx1w")
+texture = SubResource("AtlasTexture_uwcvs")
+hframes = 3
+vframes = 2
 script = ExtResource("2_wob8x")
-breadcrumb_sprite = SubResource("AtlasTexture_ufx1w")
-target_sprite = SubResource("AtlasTexture_0p21n")

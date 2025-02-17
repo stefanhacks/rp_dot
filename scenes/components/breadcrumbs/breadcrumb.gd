@@ -1,13 +1,17 @@
 @tool
-class_name PathBreadcrumb
+class_name Breadcrumb
 extends Sprite2D
 
-@export var breadcrumb_sprite: Texture2D
-@export var target_sprite: Texture2D
-@export var is_target: bool = false:
-	set(as_target):
-		is_target = as_target
-		if is_target == true:
-			texture = target_sprite
-		else:
-			texture = breadcrumb_sprite
+@export var kind: Indication = Indication.WALK:
+	set(as_indication):
+		kind = as_indication
+		frame = as_indication
+
+enum Indication {
+	WALK,
+	WALK_END,
+	RUN,
+	RUN_END,
+	TARGET,
+	MARK,
+}

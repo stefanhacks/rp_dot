@@ -1,5 +1,6 @@
-class_name CharacterPlayable
-extends Character
+@tool
+class_name CharacterRogue
+extends CharacterClickable
 
 # Core Knacks
 @export var knack = Knack.new()
