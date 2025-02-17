@@ -8,14 +8,14 @@ const BREADCRUMB_AMOUNT = 10
 @export var run_color: Color = Color.CORAL
 @export var x_color: Color = Color.REBECCA_PURPLE
 
-var breadcrumb_pool: Array[Node2D]
-var used_nodes: Array[Node2D]
+var _breadcrumb_pool: Array[Node2D]
+var _used_nodes: Array[Node2D]
 
 
 func _ready() -> void:
 	for i in range(BREADCRUMB_AMOUNT):
 		var node = _make_breadcrumb_node()
-		breadcrumb_pool.push_back(node)
+		_breadcrumb_pool.push_back(node)
 
 
 func _make_breadcrumb_node() -> Node2D:
@@ -26,26 +26,26 @@ func _make_breadcrumb_node() -> Node2D:
 
 
 func get_breadcrumb_node() -> Node2D:
-	var node = breadcrumb_pool.pop_front()
+	var node = _breadcrumb_pool.pop_front()
 	if node == null: node = _make_breadcrumb_node()
 	
-	used_nodes.push_back(node)
+	_used_nodes.push_back(node)
 	node.visible = true
 	return node
 
 
 func _clean_breadcrumb(node: Node) -> void:
 	node.visible = false
-	breadcrumb_pool.push_back(node)
+	_breadcrumb_pool.push_back(node)
 
 
 func clean_breadcrumbs() -> void:
-	for i in range(used_nodes.size()):
+	for i in range(_used_nodes.size()):
 		remove_first()
 
 
 func remove_first() -> void:
-	var node = used_nodes.pop_front()
+	var node = _used_nodes.pop_front()
 	_clean_breadcrumb(node)
 
 

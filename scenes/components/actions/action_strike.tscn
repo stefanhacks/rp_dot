@@ -5,11 +5,10 @@
 [ext_resource type="Script" path="res://scenes/components/actions/action_strike_targeted.gd" id="3_o86r0"]
 [ext_resource type="Script" path="res://scenes/components/actions/action_strike_striking.gd" id="4_inhqn"]
 
-[node name="ActionStrike" type="Node" node_paths=PackedStringArray("activated_state")]
+[node name="ActionStrike" type="Node"]
 script = ExtResource("1_0svlj")
-activated_state = NodePath("Targeting")
 
-[node name="Targeting" type="Node" parent="."]
+[node name="Activated" type="Node" parent="."]
 script = ExtResource("2_smrrx")
 
 [node name="Targeted" type="Node" parent="."]

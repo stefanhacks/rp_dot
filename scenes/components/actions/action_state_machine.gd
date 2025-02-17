@@ -14,22 +14,22 @@ static var PERFORMED = 'performed'
 @export var entity_manager: EntityManager
 @export var map: Node2D
 
-@export var max_uses: int = -1
-@export var reset_uses: ActionRenewUses
+@export var _max_uses: int = -1
+@export var _reset_uses: ActionRenewUses
 
-@export var activated_state: NodeState
+var _default_args: Dictionary = {}
+var _node_states: Dictionary = {}
+var _current_state: NodeState
 
-var default_args: Dictionary = {}
-var node_states: Dictionary = {}
-var current_state: NodeState
+var _uses_left: int
+var _cancel_cleanup: Callable
 
-var uses_left: int
-var cancel_cleanup: Callable
+@onready var _activated_state: = $Activated
 
 
 func _ready() -> void:
-	uses_left = max_uses
-	default_args = {
+	_uses_left = _max_uses
+	_default_args = {
 		'a_star_manager': a_star_manager,
 		'breadcrumb_manager': breadcrumb_manager,
 		'cursor_effect_manager': cursor_effect_manager,
@@ -40,69 +40,71 @@ func _ready() -> void:
 	
 	for child in get_children():
 		if child is NodeState:
-			node_states[child.name.to_lower()] = child
+			_node_states[child.name.to_lower()] = child
 			child.transition.connect(transition_to)
 
 
 func renew() -> void:
-	if reset_uses != null:
-		uses_left = max_uses
+	if _reset_uses != null:
+		_uses_left = _max_uses
 	else:
-		uses_left = mini(max_uses, reset_uses.get_amount())
+		_uses_left = mini(_max_uses, _reset_uses.get_amount())
 
 
+#region ActionStateMachine
 func on_action_ready() -> void:
-	if max_uses != -1 and uses_left == 0:
+	if _max_uses != -1 and _uses_left == 0:
 		action_cancelled.emit()
 	else:
 		_save_what_will_change()
-		current_state = activated_state
-		activated_state.on_enter(default_args)
+		_current_state = _activated_state
+		_activated_state.on_enter(_default_args)
 
 
 func on_action_process(delta: float) -> void:
-	current_state.on_process(delta)
+	_current_state.on_process(delta)
 
 
 func on_action_physics_process(delta: float) -> void:
-	current_state.on_physics_process(delta)
-	if current_state != null: 
-		current_state.on_next_transitions()
+	_current_state.on_physics_process(delta)
+	if _current_state != null: 
+		_current_state.on_next_transitions()
 
 
 func transition_to(state_name: String, args: Dictionary = {}) -> void:
-	if state_name == current_state.name.to_lower(): return
-	current_state.on_exit()
+	if state_name == _current_state.name.to_lower(): return
+	_current_state.on_exit()
 	
 	if state_name == CANCELLED: _on_cancelled()
 	elif state_name == PERFORMED: _on_performed()
 	else: _on_transition(state_name, args)
 
 
+#endregion
 func _save_what_will_change() -> void:
 	var original_rogue_position = rogue.position
 	var original_rogue_scale_x = rogue.scale.x
 	
-	cancel_cleanup = func ():
+	_cancel_cleanup = func ():
 		rogue.position = original_rogue_position
 		rogue.scale.x = original_rogue_scale_x
 
 
 func _on_cancelled() -> void:
-	current_state = null
-	cancel_cleanup.call()
+	_current_state = null
+	_cancel_cleanup.call()
 	breadcrumb_manager.clean_breadcrumbs()
 	action_cancelled.emit()
 
 
 func _on_performed() -> void:
-	if uses_left != -1: uses_left = maxi(0, uses_left - 1)
-	current_state = null
+	if _uses_left != -1: _uses_left = maxi(0, _uses_left - 1)
+	_current_state = null
 	action_performed.emit()
 
 
 func _on_transition(state_name: String, args: Dictionary = {}) -> void:
-	var new_state = node_states.get(state_name.to_lower())
-	current_state = new_state
-	args.merge(default_args)
+	var new_state = _node_states.get(state_name.to_lower())
+	_current_state = new_state
+	args.merge(_default_args)
 	new_state.on_enter(args)

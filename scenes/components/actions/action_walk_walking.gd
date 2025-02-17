@@ -1,9 +1,9 @@
 extends ActionState
 
-var timer = 0.0
+const CELLS_PER_SECOND = 15.0
 var path: Array[Vector2i]
 
-const CELLS_PER_SECOND = 15.0
+var _timer = 0.0
 
 
 #region State Machine
@@ -12,10 +12,10 @@ func on_physics_process(delta : float) -> void:
 		transition.emit(ActionStateMachine.CANCELLED)
 	elif path.size() == 0:
 		transition.emit(ActionStateMachine.PERFORMED)
-	elif timer == 0:
+	elif _timer == 0:
 		_take_step()
 	else:
-		timer = max(0.0, timer - delta)
+		_timer = max(0.0, _timer - delta)
 
 
 func on_enter(args: Dictionary) -> void:
@@ -24,7 +24,7 @@ func on_enter(args: Dictionary) -> void:
 
 
 func on_exit() -> void:
-	timer = 0.0
+	_timer = 0.0
 	path = []
 
 
@@ -39,4 +39,4 @@ func _take_step() -> void:
 		breadcrumb_manager.remove_first()
 		rogue.position = new_position
 		
-		timer = 1.0 / CELLS_PER_SECOND
+		_timer = 1.0 / CELLS_PER_SECOND

@@ -11,14 +11,14 @@ signal foe_clicked
 signal foe_mouse_entered
 signal foe_mouse_exited
 
-var characters_rogue: Array[CharacterRogue]
-var characters_foe: Array[CharacterFoe]
-var last_id_used = null
+var _characters_rogue: Array[CharacterRogue]
+var _characters_foe: Array[CharacterFoe]
+var _last_id_used = null
 
 
 func get_next_free_id() -> int:
-	var next_free_id = -(1 << 63) if last_id_used == null else last_id_used + 1
-	last_id_used = next_free_id
+	var next_free_id = -(1 << 63) if _last_id_used == null else _last_id_used + 1
+	_last_id_used = next_free_id
 	return next_free_id
 
 
@@ -29,7 +29,7 @@ func add_rogue(node: CharacterRogue) -> void:
 	node.mouse_exited.connect(_on_rogue_mouse_exited)
 	node.health_reached_zero.connect(_on_rogue_health_reached_zero)
 	
-	characters_rogue.push_back(node)
+	_characters_rogue.push_back(node)
 
 
 func add_foe(node: CharacterFoe) -> void:
@@ -39,7 +39,7 @@ func add_foe(node: CharacterFoe) -> void:
 	node.mouse_exited.connect(_on_foe_mouse_exited)
 	node.health_reached_zero.connect(_on_foe_health_reached_zero)
 	
-	characters_foe.push_back(node)
+	_characters_foe.push_back(node)
 
 
 #region rogue Signals

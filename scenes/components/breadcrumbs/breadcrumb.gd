@@ -2,7 +2,6 @@
 class_name Breadcrumb
 extends Sprite2D
 
-@export var sprite: Texture2D
 @export var kind: Indication = Indication.WALK:
 	set(as_indication):
 		kind = as_indication

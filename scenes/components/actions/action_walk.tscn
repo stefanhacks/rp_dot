@@ -4,9 +4,8 @@
 [ext_resource type="Script" path="res://scenes/components/actions/action_walk_activated.gd" id="2_etg26"]
 [ext_resource type="Script" path="res://scenes/components/actions/action_walk_walking.gd" id="3_3kyeu"]
 
-[node name="ActionWalk" type="Node" node_paths=PackedStringArray("activated_state")]
+[node name="ActionWalk" type="Node"]
 script = ExtResource("1_tv4ym")
-activated_state = NodePath("Activated")
 
 [node name="Activated" type="Node" parent="."]
 script = ExtResource("2_etg26")
