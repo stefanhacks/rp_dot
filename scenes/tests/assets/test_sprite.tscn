@@ -1,11 +1,18 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2tlfh7gjelsx"]
 
-[ext_resource type="PackedScene" uid="uid://mfiwuyr3kerh" path="res://scenes/components/rogues/elipse.tscn" id="1_gjk0a"]
-[ext_resource type="PackedScene" uid="uid://ctebg8wk3wgnt" path="res://scenes/components/rogues/rogue_sprite.tscn" id="2_v5i2a"]
+[ext_resource type="Texture2D" uid="uid://bf2hg33oikyh1" path="res://assets/sprites/elipse.png" id="1_77jur"]
+[ext_resource type="Texture2D" uid="uid://deap2ti5v54vl" path="res://assets/sprites/32_rogues/rogues.png" id="2_jx2cm"]
 
 [node name="TestSprite" type="Node2D"]
+position = Vector2(48, 48)
 
-[node name="Elipse" parent="." instance=ExtResource("1_gjk0a")]
-visible = false
+[node name="Elipse" type="Sprite2D" parent="."]
+texture = ExtResource("1_77jur")
+offset = Vector2(0, 14)
 
-[node name="RogueSprite" parent="." instance=ExtResource("2_v5i2a")]
+[node name="RogueSprite" type="Sprite2D" parent="."]
+z_index = 2
+texture = ExtResource("2_jx2cm")
+hframes = 6
+vframes = 7
+frame = 40

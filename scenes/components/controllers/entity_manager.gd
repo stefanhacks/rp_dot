@@ -45,6 +45,7 @@ func add_foe(node: CharacterFoe) -> void:
 #region rogue Signals
 func _on_rogue_health_reached_zero(node: CharacterRogue) -> void:
 	print("rogue death. ", node)
+	node.visible = false
 
 
 func _on_rogue_mouse_click(node: CharacterRogue) -> void:
@@ -66,6 +67,7 @@ func _on_rogue_mouse_exited(node: CharacterRogue) -> void:
 #region foe Signals
 func _on_foe_health_reached_zero(node: CharacterFoe) -> void:
 	print("Foe death. ", node)
+	node.visible = false
 
 
 func _on_foe_mouse_click(node: CharacterFoe) -> void:

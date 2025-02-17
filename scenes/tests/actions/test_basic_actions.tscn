@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dkvl1ux2lom5d" path="res://scenes/components/cursor/cursor_effect_manager.tscn" id="4_ehh51"]
 [ext_resource type="TileSet" uid="uid://cd5cv4b67p852" path="res://tilesets/tileset.tres" id="4_we5kv"]
 [ext_resource type="PackedScene" uid="uid://d27p857mqaqhp" path="res://scenes/components/actions/action_strike.tscn" id="6_n6dts"]
-[ext_resource type="PackedScene" uid="uid://d1oynlnsap1pw" path="res://scenes/components/rogues/rogue.tscn" id="9_k82mr"]
-[ext_resource type="PackedScene" uid="uid://b47j72ocbnsfg" path="res://scenes/components/foes/foe.tscn" id="10_0powg"]
+[ext_resource type="PackedScene" uid="uid://bv2gf4wp23bot" path="res://scenes/components/characters/rogue.tscn" id="9_k82mr"]
+[ext_resource type="PackedScene" uid="uid://s1m4eb4exsk" path="res://scenes/components/characters/foe.tscn" id="10_0powg"]
 
 [node name="TestBasicActions" type="Node2D" node_paths=PackedStringArray("a_star_manager", "entity_manager", "map_markers", "terrain_markers", "action_walk", "action_strike", "rogue_a", "rogue_b", "foe_a")]
 script = ExtResource("1_l5pf0")
@@ -66,9 +66,14 @@ tile_set = ExtResource("4_we5kv")
 
 [node name="Rogue" parent="." instance=ExtResource("9_k82mr")]
 position = Vector2(304, 272)
+texture_dimensions = Vector2i(1, 1)
 
 [node name="Rogue2" parent="." instance=ExtResource("9_k82mr")]
 position = Vector2(368, 240)
+texture_dimensions = Vector2i(1, 1)
 
 [node name="Foe" parent="." instance=ExtResource("10_0powg")]
 position = Vector2(368, 304)
+texture = null
+texture_dimensions = Vector2i(1, 1)
+texture_frame = 0

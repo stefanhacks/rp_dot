@@ -9,6 +9,6 @@ script = ExtResource("1_vkpuj")
 
 [node name="AStarManager" parent="." instance=ExtResource("4_af0bc")]
 
-[node name="BreadcrumbTracker" parent="." instance=ExtResource("2_6j5hn")]
+[node name="BreadcrumbManager" parent="." instance=ExtResource("2_6j5hn")]
 
-[node name="BreadcrumbTracker2" parent="." instance=ExtResource("2_6j5hn")]
+[node name="BreadcrumbManager2" parent="." instance=ExtResource("2_6j5hn")]

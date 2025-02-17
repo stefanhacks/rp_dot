@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var rogue: Rogue = $Character
+@onready var rogue: CharacterRogue = $CharacterRogue
 
 func _ready() -> void:
 	_test_attack()
