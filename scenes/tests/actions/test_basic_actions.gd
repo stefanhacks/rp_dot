@@ -7,6 +7,7 @@ extends Node
 
 @export var action_walk: ActionStateMachine
 @export var action_strike: ActionStateMachine
+@export var action_breathe: ActionStateMachine
 
 @export var rogue_a: Node2D
 @export var rogue_b: Node2D
@@ -70,5 +71,8 @@ func _disconnect_current_action() -> void:
 
 
 func _next_test() -> void:
-	_test_stage = (_test_stage + 1) % 2
-	_current_action = action_walk if _test_stage == 0 else action_strike
+	_test_stage = (_test_stage + 1) % 3
+	match _test_stage:
+		0: _current_action = action_walk
+		1: _current_action = action_strike
+		2: _current_action = action_breathe
