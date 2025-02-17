@@ -25,13 +25,13 @@ func is_point_solid(target_cell: Vector2) -> bool:
 	return _grid.is_point_solid(target_cell)
 
 
-func add_obstacle(position: Vector2i) -> void:
-	_grid.set_point_solid(position)
+func set_obstacle(position: Vector2i, solid = true) -> void:
+	_grid.set_point_solid(position, solid)
 
 
-func add_obstacles(obstacles: Array[Vector2i]) -> void:
+func set_obstacles(obstacles: Array[Vector2i], solid = true) -> void:
 	for obstacle in obstacles:
-		add_obstacle(obstacle)
+		set_obstacle(obstacle, solid)
 
 
 func get_path_on_grid(from_cell: Vector2i, to_cell: Vector2i) -> Array[Vector2i]:

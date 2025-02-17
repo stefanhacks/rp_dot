@@ -6,7 +6,7 @@ signal action_performed
 static var CANCELLED = 'cancelled'
 static var PERFORMED = 'performed'
 
-@export var rogue: Rogue
+@export var rogue: CharacterRogue
 
 @export var a_star_manager: AStarManager
 @export var breadcrumb_manager: BreadcrumbManager

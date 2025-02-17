@@ -11,8 +11,16 @@ signal foe_clicked
 signal foe_mouse_entered
 signal foe_mouse_exited
 
-var _characters_rogue: Array[CharacterRogue]
-var _characters_foe: Array[CharacterFoe]
+var characters_rogue: Array[CharacterRogue]
+var characters_foe: Array[CharacterFoe]
+var characters: Array[CharacterClickable]:
+	set(_value): pass
+	get():
+		var all: Array[CharacterClickable] = []
+		all.append_array(characters_rogue)
+		all.append_array(characters_foe)
+		return all
+
 var _last_id_used = null
 
 
@@ -29,7 +37,7 @@ func add_rogue(node: CharacterRogue) -> void:
 	node.mouse_exited.connect(_on_rogue_mouse_exited)
 	node.health_reached_zero.connect(_on_rogue_health_reached_zero)
 	
-	_characters_rogue.push_back(node)
+	characters_rogue.push_back(node)
 
 
 func add_foe(node: CharacterFoe) -> void:
@@ -39,7 +47,7 @@ func add_foe(node: CharacterFoe) -> void:
 	node.mouse_exited.connect(_on_foe_mouse_exited)
 	node.health_reached_zero.connect(_on_foe_health_reached_zero)
 	
-	_characters_foe.push_back(node)
+	characters_foe.push_back(node)
 
 
 #region rogue Signals

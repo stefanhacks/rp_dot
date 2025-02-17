@@ -30,7 +30,7 @@ func _setup_grid() -> void:
 	var region = map_markers.get_used_rect()
 	var cell_size = Vector2i(32, 32)
 	a_star_manager.setup_grid(region, cell_size)
-	a_star_manager.add_obstacles(terrain_markers.get_used_cells())
+	a_star_manager.set_obstacles(terrain_markers.get_used_cells())
 
 
 func _process(delta: float) -> void:

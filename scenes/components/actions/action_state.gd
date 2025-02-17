@@ -5,7 +5,7 @@ var a_star_manager: AStarManager
 var breadcrumb_manager: BreadcrumbManager
 var cursor_effect_manager: CursorEffectManager
 var entity_manager: EntityManager
-var rogue: Rogue
+var rogue: CharacterRogue
 var map: Node2D
 
 

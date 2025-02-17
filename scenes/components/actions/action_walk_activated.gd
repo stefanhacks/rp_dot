@@ -29,9 +29,20 @@ func _get_path_to(target_cell: Vector2) -> Array[Vector2i]:
 	var walk_distance = rogue.get_total_value(Ruleset.Stat.WALK)
 	var run_distance = rogue.get_total_value(Ruleset.Stat.RUN)
 	
+	_set_character_cells_as_obstacles(true)
 	var path = a_star_manager.get_path_on_grid(sprite_cell, target_cell).slice(1, walk_distance + run_distance + 1)
+	_set_character_cells_as_obstacles(false)
 	
 	return path
+
+
+# This one might belong elsewhere....
+func _set_character_cells_as_obstacles(solid = true) -> void:
+	var cells: Array[Vector2i] = []
+	for character in entity_manager.characters:
+		cells.append(map.local_to_map(character.global_position))
+	
+	a_star_manager.set_obstacles(cells, solid)
 
 
 func _place_target(new_target_cell: Vector2i) -> void:

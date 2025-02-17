@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bg3ju0l8b7rbl"]
 
 [ext_resource type="Script" path="res://scenes/tests/map/test_character_rogue.gd" id="1_7niqo"]
-[ext_resource type="Script" path="res://scripts/globals/character_rogue.gd" id="2_ljuah"]
+[ext_resource type="Script" path="res://scenes/components/characters/character_rogue.gd" id="2_ljuah"]
 [ext_resource type="Script" path="res://scripts/structs/knack.gd" id="3_lcclc"]
 [ext_resource type="Script" path="res://scripts/structs/stats_playable.gd" id="4_11ena"]
 
