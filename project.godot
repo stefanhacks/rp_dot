@@ -31,12 +31,12 @@ mouse_cursor/custom_image="res://assets/mouse_icon.png"
 [file_customization]
 
 folder_colors={
-"res://assets/": "red",
+"res://assets/": "yellow",
 "res://resources/": "orange",
-"res://scenes/": "green",
+"res://scenes/": "teal",
 "res://scripts/": "purple",
-"res://themes/": "yellow",
-"res://tilesets/": "blue"
+"res://themes/": "pink",
+"res://tilesets/": "red"
 }
 
 [input]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2tlfh7gjelsx"]
 
-[ext_resource type="Texture2D" uid="uid://bf2hg33oikyh1" path="res://assets/sprites/elipse.png" id="1_77jur"]
+[ext_resource type="Texture2D" uid="uid://bf2hg33oikyh1" path="res://assets/sprites/cursor/elipse.png" id="1_77jur"]
 [ext_resource type="Texture2D" uid="uid://deap2ti5v54vl" path="res://assets/sprites/32_rogues/rogues.png" id="2_jx2cm"]
 
 [node name="TestSprite" type="Node2D"]

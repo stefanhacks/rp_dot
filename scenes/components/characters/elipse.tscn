@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://mfiwuyr3kerh"]
 
-[ext_resource type="Texture2D" uid="uid://bf2hg33oikyh1" path="res://assets/sprites/elipse.png" id="1_ekmdm"]
+[ext_resource type="Texture2D" uid="uid://bf2hg33oikyh1" path="res://assets/sprites/cursor/elipse.png" id="1_ekmdm"]
 
 [node name="Elipse" type="Sprite2D"]
 texture = ExtResource("1_ekmdm")

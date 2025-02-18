@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bv2gf4wp23bot"]
 
 [ext_resource type="Script" path="res://scenes/components/characters/character_rogue.gd" id="1_u0361"]
-[ext_resource type="Texture2D" uid="uid://bf2hg33oikyh1" path="res://assets/sprites/elipse.png" id="2_fegmo"]
+[ext_resource type="Texture2D" uid="uid://bf2hg33oikyh1" path="res://assets/sprites/cursor/elipse.png" id="2_fegmo"]
 [ext_resource type="Script" path="res://scripts/structs/knack.gd" id="2_ouoeq"]
 [ext_resource type="Texture2D" uid="uid://deap2ti5v54vl" path="res://assets/sprites/32_rogues/rogues.png" id="3_uj0kq"]
 [ext_resource type="Script" path="res://scripts/structs/stats_playable.gd" id="4_70jju"]
