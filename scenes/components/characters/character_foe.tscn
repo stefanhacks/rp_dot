@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/components/characters/character_foe.gd" id="1_c8mea"]
 [ext_resource type="Script" path="res://scripts/structs/stats_foe.gd" id="2_0u5kl"]
 [ext_resource type="Texture2D" uid="uid://r57881bfq8r3" path="res://assets/sprites/32_rogues/monsters.png" id="3_r5so5"]
-[ext_resource type="Texture2D" uid="uid://bf2hg33oikyh1" path="res://assets/sprites/elipse.png" id="5_aaxrb"]
+[ext_resource type="Texture2D" uid="uid://bf2hg33oikyh1" path="res://assets/sprites/cursor/elipse.png" id="5_aaxrb"]
 
 [sub_resource type="Resource" id="Resource_fghs2"]
 script = ExtResource("2_0u5kl")
