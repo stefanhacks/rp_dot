@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7vaq51wradak"]
+
+[ext_resource type="Texture2D" uid="uid://dlmj13yp0tjsy" path="res://assets/sprites/ui/kenney_ui_pixel_adventure.png" id="1_v7xhn"]
+[ext_resource type="Texture2D" uid="uid://deap2ti5v54vl" path="res://assets/sprites/32_rogues/rogues.png" id="1_vbg6h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irtyu"]
+atlas = ExtResource("1_v7xhn")
+region = Rect2(195, 67, 26, 26)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qx0h1"]
+texture = SubResource("AtlasTexture_irtyu")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+region_rect = Rect2(0, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1d1i8"]
+atlas = ExtResource("1_vbg6h")
+region = Rect2(160, 128, 32, 32)
+
+[node name="SurgeEntry" type="Control"]
+custom_minimum_size = Vector2(34, 40)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -17.0
+offset_right = 17.0
+offset_bottom = 40.0
+pivot_offset = Vector2(17, 0)
+
+[node name="BG" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_qx0h1")
+
+[node name="Image" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(32, 36)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 33.0
+offset_bottom = 38.0
+texture = SubResource("AtlasTexture_1d1i8")

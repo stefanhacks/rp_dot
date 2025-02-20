@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://0mvddtqgdska"]
+
+[ext_resource type="Theme" uid="uid://i6kmju4r06cg" path="res://themes/ui_theme.tres" id="1_s83wr"]
+[ext_resource type="Script" path="res://scenes/ui/panels/ui_button.gd" id="2_1rhfp"]
+[ext_resource type="PackedScene" uid="uid://knrrhkjyht6d" path="res://scenes/ui/panels/ui_button_round.tscn" id="2_pb4kv"]
+[ext_resource type="Texture2D" uid="uid://c3eo613nyx2fb" path="res://assets/sprites/ui/sprout_lands_ui_white_icons.png" id="3_cvne7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05qwc"]
+atlas = ExtResource("3_cvne7")
+region = Rect2(64, 32, 16, 16)
+
+[node name="ButtonCancel" type="Control"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 20.0
+offset_bottom = 20.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("1_s83wr")
+script = ExtResource("2_1rhfp")
+
+[node name="ButtonRound" parent="." instance=ExtResource("2_pb4kv")]
+layout_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color(0.711186, 0, 0.192636, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_05qwc")
+
+[connection signal="button_down" from="ButtonRound" to="." method="_on_button_round_button_down"]
+[connection signal="button_up" from="ButtonRound" to="." method="_on_button_round_button_up"]
+[connection signal="pressed" from="ButtonRound" to="." method="_on_button_round_pressed"]
+[connection signal="toggled" from="ButtonRound" to="." method="_on_button_round_toggled"]

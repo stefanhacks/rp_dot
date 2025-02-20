@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqlwtc0rx648u"]
+
+[ext_resource type="PackedScene" uid="uid://c7vaq51wradak" path="res://scenes/ui/surge_tracker/ui_surge_entry.tscn" id="1_fkutx"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_51axy"]
+load_path = "res://.godot/imported/sprout_lands_ui_white_icons.png-428ab769c38bf2631390a1818e6f5df0.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3pk8"]
+atlas = SubResource("CompressedTexture2D_51axy")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tehge"]
+load_path = "res://.godot/imported/sprout_lands_ui_white_icons.png-428ab769c38bf2631390a1818e6f5df0.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk55k"]
+atlas = SubResource("CompressedTexture2D_tehge")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50nh1"]
+atlas = SubResource("CompressedTexture2D_tehge")
+region = Rect2(64, 0, 16, 16)
+
+[node name="SurgeTracker" type="Control"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 60.0
+grow_horizontal = 2
+
+[node name="Entries" type="HFlowContainer" parent="."]
+layout_mode = 2
+offset_right = 800.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/h_separation = 4
+alignment = 1
+
+[node name="SurgeEntry" parent="Entries" instance=ExtResource("1_fkutx")]
+layout_mode = 2
+
+[node name="SurgeEntry2" parent="Entries" instance=ExtResource("1_fkutx")]
+layout_mode = 2
+
+[node name="SurgeEntry4" parent="Entries" instance=ExtResource("1_fkutx")]
+layout_mode = 2
+
+[node name="SurgeEntry5" parent="Entries" instance=ExtResource("1_fkutx")]
+layout_mode = 2
+
+[node name="SurgeEntry3" parent="Entries" instance=ExtResource("1_fkutx")]
+layout_mode = 2
+
+[node name="Icons" type="HFlowContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -8.0
+offset_top = 43.0
+offset_right = 88.0
+offset_bottom = 59.0
+grow_horizontal = 2
+theme_override_constants/h_separation = 22
+
+[node name="Current" type="TextureRect" parent="Icons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_c3pk8")
+
+[node name="Current2" type="TextureRect" parent="Icons"]
+self_modulate = Color(1, 1, 1, 0.627451)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_lk55k")
+
+[node name="Current3" type="TextureRect" parent="Icons"]
+self_modulate = Color(1, 1, 1, 0.196078)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_50nh1")

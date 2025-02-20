@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsgukmbh5yqlx"]
+
+[ext_resource type="Texture2D" uid="uid://cdfgm0de7fbts" path="res://assets/sprites/ui/pixel_frog_block.png" id="1_ssr31"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvkkh"]
+atlas = ExtResource("1_ssr31")
+region = Rect2(32, 0, 16, 16)
+
+[node name="HealthBip" type="TextureRect"]
+offset_right = 16.0
+offset_bottom = 16.0
+texture = SubResource("AtlasTexture_wvkkh")
+stretch_mode = 2

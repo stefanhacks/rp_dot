@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://xthspghqx8fy"]
+
+[ext_resource type="Script" path="res://scenes/ui/stat_indicators/ui_health_bar.gd" id="1_3nwgu"]
+[ext_resource type="Theme" uid="uid://i6kmju4r06cg" path="res://themes/ui_theme.tres" id="1_u7dhg"]
+
+[node name="Panel" type="Panel"]
+custom_minimum_size = Vector2(90, 26)
+offset_right = 90.0
+offset_bottom = 26.0
+size_flags_vertical = 3
+theme = ExtResource("1_u7dhg")
+script = ExtResource("1_3nwgu")
+pips = 5
+
+[node name="HealthBar" type="FlowContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_top = 5.0
+offset_right = 40.0
+offset_bottom = 21.0
+grow_horizontal = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+alignment = 1
