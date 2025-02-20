@@ -1,7 +1,8 @@
 @tool
+class_name HealthBar
 extends Panel
 
-const UI_HEALTH_PIP = preload("res://scenes/ui/indicators/ui_health_pip.tscn")
+const UI_HEALTH_PIP = preload("res://scenes/ui/stat_indicators/ui_health_pip.tscn")
 const MAX_PIPS = 10
 
 @export var pips = 0:
@@ -12,7 +13,6 @@ const MAX_PIPS = 10
 @onready var _health_bar: FlowContainer = $HealthBar
 
 var _pip_node_pool = []
-var _pip_height: int
 
 
 func _ready() -> void:

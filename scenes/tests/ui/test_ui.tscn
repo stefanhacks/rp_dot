@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=4 uid="uid://c4hiwcxaxj71n"]
+[gd_scene load_steps=6 format=4 uid="uid://c4hiwcxaxj71n"]
 
 [ext_resource type="PackedScene" uid="uid://dj8tm64e1drqq" path="res://scenes/ui/ui.tscn" id="1_0ffnp"]
+[ext_resource type="Script" path="res://scenes/tests/ui/test_ui.gd" id="1_15n02"]
 [ext_resource type="TileSet" uid="uid://cd5cv4b67p852" path="res://tilesets/tileset.tres" id="9_n645r"]
 [ext_resource type="PackedScene" uid="uid://bv2gf4wp23bot" path="res://scenes/components/characters/character_rogue.tscn" id="10_2yh3s"]
 [ext_resource type="PackedScene" uid="uid://s1m4eb4exsk" path="res://scenes/components/characters/character_foe.tscn" id="11_munwj"]
 
-[node name="TestBasicActions" type="Node2D"]
+[node name="TestBasicActions" type="Node2D" node_paths=PackedStringArray("rogue")]
+script = ExtResource("1_15n02")
+rogue = NodePath("Rogue")
 
 [node name="UI" parent="." instance=ExtResource("1_0ffnp")]
 

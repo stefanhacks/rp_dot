@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Ruleset="*res://scripts/globals/ruleset.gd"
 DiceTray="*res://scripts/globals/dice_tray.gd"
+ConfirmationPopup="*res://scripts/globals/confirmation_popup.gd"
 
 [display]
 
@@ -38,6 +39,10 @@ folder_colors={
 "res://themes/": "pink",
 "res://tilesets/": "red"
 }
+
+[global_group]
+
+ui=""
 
 [input]
 

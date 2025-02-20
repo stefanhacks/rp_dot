@@ -87,7 +87,7 @@ func _save_what_will_change() -> void:
 	
 	_cancel_cleanup = func ():
 		rogue.position = original_rogue_position
-		rogue.scale.x = original_rogue_scale_x
+		rogue.sprite_node.scale.x = original_rogue_scale_x
 
 
 func _on_cancelled() -> void:

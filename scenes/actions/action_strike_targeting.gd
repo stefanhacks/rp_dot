@@ -32,7 +32,7 @@ func _on_click() -> void:
 
 func _turn_to_mouse() -> void:
 	var mouse_position = get_viewport().get_mouse_position()
-	rogue.scale.x = 1 if mouse_position.x < rogue.position.x else -1
+	rogue.sprite_node.scale.x = 1 if mouse_position.x < rogue.position.x else -1
 
 
 func _try_to_target(node: Character) -> void:

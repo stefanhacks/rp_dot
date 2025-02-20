@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqlwtc0rx648u"]
+[gd_scene load_steps=8 format=3 uid="uid://bqlwtc0rx648u"]
 
+[ext_resource type="Script" path="res://scenes/ui/surge_tracker/ui_surge_tracker.gd" id="1_5doxe"]
 [ext_resource type="PackedScene" uid="uid://c7vaq51wradak" path="res://scenes/ui/surge_tracker/ui_surge_entry.tscn" id="1_fkutx"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_51axy"]
@@ -26,6 +27,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 60.0
 grow_horizontal = 2
+script = ExtResource("1_5doxe")
 
 [node name="Entries" type="HFlowContainer" parent="."]
 layout_mode = 2

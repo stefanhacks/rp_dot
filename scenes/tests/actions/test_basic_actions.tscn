@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=4 uid="uid://cwd1fmdtxkeek"]
+[gd_scene load_steps=26 format=4 uid="uid://cwd1fmdtxkeek"]
 
 [ext_resource type="Script" path="res://scenes/tests/actions/test_basic_actions.gd" id="1_l5pf0"]
 [ext_resource type="PackedScene" uid="uid://cnqnrq8tra84i" path="res://scenes/components/a_star/a_star_manager.tscn" id="2_gu0ca"]
+[ext_resource type="PackedScene" uid="uid://dj8tm64e1drqq" path="res://scenes/ui/ui.tscn" id="2_lqcfg"]
 [ext_resource type="PackedScene" uid="uid://lmran6kp8w1b" path="res://scenes/components/controllers/entity_manager.tscn" id="3_6r67k"]
 [ext_resource type="PackedScene" uid="uid://70ddiho573n2" path="res://scenes/components/breadcrumbs/breadcrumb_manager.tscn" id="3_rbaol"]
 [ext_resource type="PackedScene" uid="uid://djaybyugddcaq" path="res://scenes/actions/action_walk.tscn" id="4_0rdgo"]
@@ -9,8 +10,64 @@
 [ext_resource type="TileSet" uid="uid://cd5cv4b67p852" path="res://tilesets/tileset.tres" id="4_we5kv"]
 [ext_resource type="PackedScene" uid="uid://d27p857mqaqhp" path="res://scenes/actions/action_strike.tscn" id="6_n6dts"]
 [ext_resource type="PackedScene" uid="uid://x4vut6xvrpo4" path="res://scenes/actions/action_skill_breathe.tscn" id="8_4kc6d"]
-[ext_resource type="PackedScene" uid="uid://bv2gf4wp23bot" path="res://scenes/components/characters/character_rogue.tscn" id="9_k82mr"]
-[ext_resource type="PackedScene" uid="uid://s1m4eb4exsk" path="res://scenes/components/characters/character_foe.tscn" id="10_0powg"]
+[ext_resource type="Script" path="res://scenes/components/characters/character_rogue.gd" id="10_hnhgb"]
+[ext_resource type="Script" path="res://scripts/structs/knack.gd" id="11_pc8gw"]
+[ext_resource type="Script" path="res://scripts/structs/stats_playable.gd" id="12_sokhj"]
+[ext_resource type="Texture2D" uid="uid://bf2hg33oikyh1" path="res://assets/sprites/cursor/elipse.png" id="13_7topa"]
+[ext_resource type="Texture2D" uid="uid://deap2ti5v54vl" path="res://assets/sprites/32_rogues/rogues.png" id="14_vgjru"]
+[ext_resource type="PackedScene" uid="uid://xthspghqx8fy" path="res://scenes/ui/stat_indicators/ui_health_bar.tscn" id="15_8e47o"]
+[ext_resource type="Script" path="res://scenes/components/characters/character_foe.gd" id="16_sn7wr"]
+[ext_resource type="Script" path="res://scripts/structs/stats_foe.gd" id="17_t0d5x"]
+[ext_resource type="Texture2D" uid="uid://r57881bfq8r3" path="res://assets/sprites/32_rogues/monsters.png" id="18_suifi"]
+
+[sub_resource type="Resource" id="Resource_7f4uu"]
+script = ExtResource("11_pc8gw")
+strike = 0
+defend = 0
+affect = 0
+resist = 0
+
+[sub_resource type="Resource" id="Resource_u08q4"]
+script = ExtResource("12_sokhj")
+strike_bonus = 0
+defend_bonus = 0
+affect_bonus = 0
+resist_bonus = 0
+max_health = 0
+surge = 0
+walk = 4
+run = 2
+damage = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0714u"]
+size = Vector2(32, 32)
+
+[sub_resource type="Resource" id="Resource_sc0k0"]
+script = ExtResource("12_sokhj")
+strike_bonus = 0
+defend_bonus = 0
+affect_bonus = 0
+resist_bonus = 0
+max_health = 0
+surge = 0
+walk = 4
+run = 2
+damage = 2
+
+[sub_resource type="Resource" id="Resource_fghs2"]
+script = ExtResource("17_t0d5x")
+to_strike_peril = 0
+to_defend_peril = 0
+to_affect_peril = 0
+to_resist_peril = 0
+max_health = 2
+surge = 0
+walk = 0
+run = 0
+damage = 0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whj5s"]
+size = Vector2(32, 32)
 
 [node name="TestBasicActions" type="Node2D" node_paths=PackedStringArray("a_star_manager", "entity_manager", "map_markers", "terrain_markers", "action_walk", "action_strike", "action_breathe", "rogue_a", "rogue_b", "foe_a")]
 script = ExtResource("1_l5pf0")
@@ -24,6 +81,8 @@ action_breathe = NodePath("ActionBreathe")
 rogue_a = NodePath("Rogue")
 rogue_b = NodePath("Rogue2")
 foe_a = NodePath("Foe")
+
+[node name="UI" parent="." instance=ExtResource("2_lqcfg")]
 
 [node name="AStarManager" parent="." instance=ExtResource("2_gu0ca")]
 
@@ -75,14 +134,101 @@ modulate = Color(0, 1, 0, 0.545098)
 tile_map_data = PackedByteArray("AAAMAAUAAQAAAAAAAQAMAAwAAQAAAAAAAQALAAQAAQAAAAAAAQAMAAQAAQAAAAAAAQANAAUAAQAAAAAAAQANAAYAAQAAAAAAAQANAAcAAQAAAAAAAQALAAoAAQAAAAAAAQALAAsAAQAAAAAAAQALAAwAAQAAAAAAAQANAA0AAQAAAAAAAQAMAA0AAQAAAAAAAQALAA0AAQAAAAAAAQAKAA0AAQAAAAAAAQAJAA0AAQAAAAAAAQAIAA0AAQAAAAAAAQADAA0AAQAAAAAAAQACAA0AAQAAAAAAAQACAAwAAQAAAAAAAQACAAsAAQAAAAAAAQACAAoAAQAAAAAAAQACAAkAAQAAAAAAAQARAA0AAQAAAAAAAQASAA0AAQAAAAAAAQATAA0AAQAAAAAAAQAUAA0AAQAAAAAAAQAWAAwAAQAAAAAAAQAWAAsAAQAAAAAAAQAWAAoAAQAAAAAAAQAWAAkAAQAAAAAAAQAVAAoAAQAAAAAAAQAUAAoAAQAAAAAAAQAUAAsAAQAAAAAAAQAVAAsAAQAAAAAAAQAWAAYAAQAAAAAAAQAWAAUAAQAAAAAAAQAWAAQAAQAAAAAAAQAVAAQAAQAAAAAAAQAUAAQAAQAAAAAAAQATAAQAAQAAAAAAAQASAAQAAQAAAAAAAQAGAAgAAQAAAAAAAQAGAAkAAQAAAAAAAQAHAAgAAQAAAAAAAQAHAAcAAQAAAAAAAQAGAAcAAQAAAAAAAQASAAYAAQAAAAAAAQASAAcAAQAAAAAAAQAQAAsAAQAAAAAAAQAQAAoAAQAAAAAAAQAPAAoAAQAAAAAAAQAOAAoAAQAAAAAAAQANAAoAAQAAAAAAAQANAAkAAQAAAAAAAQAOAAkAAQAAAAAAAQAPAAkAAQAAAAAAAQACAAUAAQAAAAAAAQADAAQAAQAAAAAAAQA=")
 tile_set = ExtResource("4_we5kv")
 
-[node name="Rogue" parent="." instance=ExtResource("9_k82mr")]
+[node name="Rogue" type="Node2D" parent="."]
 position = Vector2(304, 272)
+script = ExtResource("10_hnhgb")
+knack = SubResource("Resource_7f4uu")
+stats = SubResource("Resource_u08q4")
 
-[node name="Rogue2" parent="." instance=ExtResource("9_k82mr")]
+[node name="Elipse" type="Sprite2D" parent="Rogue"]
+visible = false
+z_index = -1
+texture = ExtResource("13_7topa")
+offset = Vector2(0, 14)
+
+[node name="Sprite" type="Sprite2D" parent="Rogue"]
+z_index = 2
+texture = ExtResource("14_vgjru")
+hframes = 6
+vframes = 7
+frame = 40
+
+[node name="Area2D" type="Area2D" parent="Rogue"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rogue/Area2D"]
+shape = SubResource("RectangleShape2D_0714u")
+
+[node name="HealthBarContainer" parent="Rogue" instance=ExtResource("15_8e47o")]
+visible = false
+offset_bottom = 43.0
+
+[node name="Rogue2" type="Node2D" parent="."]
 position = Vector2(368, 240)
+script = ExtResource("10_hnhgb")
+knack = SubResource("Resource_7f4uu")
+stats = SubResource("Resource_sc0k0")
 
-[node name="Foe" parent="." instance=ExtResource("10_0powg")]
+[node name="Elipse" type="Sprite2D" parent="Rogue2"]
+visible = false
+z_index = -1
+texture = ExtResource("13_7topa")
+offset = Vector2(0, 14)
+
+[node name="Sprite" type="Sprite2D" parent="Rogue2"]
+z_index = 2
+texture = ExtResource("14_vgjru")
+hframes = 6
+vframes = 7
+frame = 40
+
+[node name="Area2D" type="Area2D" parent="Rogue2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rogue2/Area2D"]
+shape = SubResource("RectangleShape2D_0714u")
+
+[node name="HealthBarContainer" parent="Rogue2" instance=ExtResource("15_8e47o")]
+visible = false
+offset_bottom = 43.0
+
+[node name="Foe" type="Node2D" parent="."]
 position = Vector2(368, 304)
-texture = null
-texture_dimensions = Vector2i(1, 1)
-texture_frame = 0
+script = ExtResource("16_sn7wr")
+stats = SubResource("Resource_fghs2")
+
+[node name="Elipse" type="Sprite2D" parent="Foe"]
+visible = false
+z_index = -1
+texture = ExtResource("13_7topa")
+offset = Vector2(0, 14)
+
+[node name="Sprite" type="Sprite2D" parent="Foe"]
+z_index = 2
+texture = ExtResource("18_suifi")
+hframes = 12
+vframes = 13
+frame = 146
+
+[node name="Area2D" type="Area2D" parent="Foe"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foe/Area2D"]
+shape = SubResource("RectangleShape2D_whj5s")
+
+[node name="HealthBarContainer" parent="Foe" instance=ExtResource("15_8e47o")]
+visible = false
+offset_bottom = 43.0
+
+[connection signal="input_event" from="Rogue/Area2D" to="Rogue" method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Rogue/Area2D" to="Rogue" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Rogue/Area2D" to="Rogue" method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_shape_entered" from="Rogue/Area2D" to="Rogue" method="_on_area_2d_mouse_shape_entered"]
+[connection signal="mouse_shape_exited" from="Rogue/Area2D" to="Rogue" method="_on_area_2d_mouse_shape_exited"]
+[connection signal="input_event" from="Rogue2/Area2D" to="Rogue2" method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Rogue2/Area2D" to="Rogue2" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Rogue2/Area2D" to="Rogue2" method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_shape_entered" from="Rogue2/Area2D" to="Rogue2" method="_on_area_2d_mouse_shape_entered"]
+[connection signal="mouse_shape_exited" from="Rogue2/Area2D" to="Rogue2" method="_on_area_2d_mouse_shape_exited"]
+[connection signal="input_event" from="Foe/Area2D" to="Foe" method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Foe/Area2D" to="Foe" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Foe/Area2D" to="Foe" method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_shape_entered" from="Foe/Area2D" to="Foe" method="_on_area_2d_mouse_shape_entered"]
+[connection signal="mouse_shape_exited" from="Foe/Area2D" to="Foe" method="_on_area_2d_mouse_shape_exited"]

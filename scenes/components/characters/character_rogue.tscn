@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bv2gf4wp23bot"]
+[gd_scene load_steps=10 format=3 uid="uid://bv2gf4wp23bot"]
 
 [ext_resource type="Script" path="res://scenes/components/characters/character_rogue.gd" id="1_u0361"]
 [ext_resource type="Texture2D" uid="uid://bf2hg33oikyh1" path="res://assets/sprites/cursor/elipse.png" id="2_fegmo"]
 [ext_resource type="Script" path="res://scripts/structs/knack.gd" id="2_ouoeq"]
 [ext_resource type="Texture2D" uid="uid://deap2ti5v54vl" path="res://assets/sprites/32_rogues/rogues.png" id="3_uj0kq"]
 [ext_resource type="Script" path="res://scripts/structs/stats_playable.gd" id="4_70jju"]
+[ext_resource type="PackedScene" uid="uid://xthspghqx8fy" path="res://scenes/ui/stat_indicators/ui_health_bar.tscn" id="6_nss10"]
 
 [sub_resource type="Resource" id="Resource_7f4uu"]
 script = ExtResource("2_ouoeq")
@@ -51,6 +52,11 @@ frame = 40
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_0714u")
 
+[node name="HealthBarContainer" parent="." instance=ExtResource("6_nss10")]
+visible = false
+
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_shape_entered" from="Area2D" to="." method="_on_area_2d_mouse_shape_entered"]
+[connection signal="mouse_shape_exited" from="Area2D" to="." method="_on_area_2d_mouse_shape_exited"]

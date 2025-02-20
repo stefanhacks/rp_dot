@@ -9,9 +9,9 @@ extends Node
 @export var action_strike: ActionStateMachine
 @export var action_breathe: ActionStateMachine
 
-@export var rogue_a: Node2D
-@export var rogue_b: Node2D
-@export var foe_a: Node2D
+@export var rogue_a: CharacterClickable
+@export var rogue_b: CharacterClickable
+@export var foe_a: CharacterClickable
 
 
 var _current_action: ActionStateMachine
@@ -22,6 +22,15 @@ var _test_stage = 0
 func _ready() -> void:
 	_setup_grid()
 	_current_action = action_walk
+	
+	rogue_a.stats.max_health = 3
+	rogue_b.stats.max_health = 4
+	foe_a.stats.max_health = 5
+	
+	rogue_a.heal()
+	rogue_b.heal()
+	foe_a.heal()
+	
 	entity_manager.add_rogue(rogue_a)
 	entity_manager.add_rogue(rogue_b)
 	entity_manager.add_foe(foe_a)

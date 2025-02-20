@@ -9,10 +9,7 @@ func on_process(_delta: float) -> void:
 
 
 func on_physics_process(_delta: float) -> void:
-	if Input.is_action_just_pressed('left_click'):
-		transition.emit('striking', { 'target': target })
-	elif Input.is_action_just_pressed('right_click'):
-		transition.emit(ActionStateMachine.CANCELLED)
+	pass
 
 
 func on_next_transitions() -> void:
@@ -22,7 +19,7 @@ func on_next_transitions() -> void:
 func on_enter(args: Dictionary) -> void:
 	super(args)
 	target = args['target']
-	print("Waiting for confirm.")
+	ConfirmationPopup.show(_on_confirm, _on_cancel, rogue.global_position + Vector2(0, -50))
 
 
 func on_exit() -> void:
@@ -30,3 +27,10 @@ func on_exit() -> void:
 
 
 #endregion
+
+func _on_confirm() -> void:
+	transition.emit('striking', { 'target': target })
+
+
+func _on_cancel() -> void:
+	transition.emit(ActionStateMachine.CANCELLED)

@@ -34,7 +34,7 @@ func _take_step() -> void:
 		var new_step = path.pop_front()
 		var new_position = a_star_manager.get_centered_position_on_grid(new_step)
 		if rogue.position.x != new_position.x:
-			rogue.scale.x = -1 if rogue.position.x <= new_position.x else 1
+			rogue.sprite_node.scale.x = -1 if rogue.position.x <= new_position.x else 1
 		
 		breadcrumb_manager.remove_first()
 		rogue.position = new_position
