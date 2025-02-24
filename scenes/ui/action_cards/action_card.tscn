@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkuxplvtdtiit"]
+
+[ext_resource type="Script" path="res://scenes/ui/action_cards/action_card.gd" id="1_bq4g1"]
+[ext_resource type="Theme" uid="uid://i6kmju4r06cg" path="res://themes/ui_theme.tres" id="2_ho74u"]
+
+[node name="ActionCard" type="Control" node_paths=PackedStringArray("_border", "_background", "_title", "_description")]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 80.0
+offset_bottom = 96.0
+script = ExtResource("1_bq4g1")
+_border = NodePath("Border")
+_background = NodePath("MarginContainer/Background")
+_title = NodePath("Title")
+_description = NodePath("Description")
+
+[node name="Border" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.063, 0.506, 0.439, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 3
+
+[node name="Background" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0.253, 0.597, 0.501, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 26.0
+grow_horizontal = 2
+theme = ExtResource("2_ho74u")
+theme_override_font_sizes/font_size = 32
+text = "BREATHE"
+horizontal_alignment = 1
+clip_text = true
+
+[node name="Description" type="Label" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(70, 57)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -60.0
+offset_right = 35.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_ho74u")
+text = "Strike"
+horizontal_alignment = 1
+autowrap_mode = 2
