@@ -1,7 +1,5 @@
 extends ActionState
 
-var target: CharacterFoe
-
 
 # Animation should go in this state.
 #region State Machine
@@ -19,10 +17,8 @@ func on_next_transitions() -> void:
 
 func on_enter(args: Dictionary) -> void:
 	super(args)
-	target = args['target']
 	print ("Locked in")
-	_strike()
-	transition.emit(ActionStateMachine.PERFORMED)
+	_strike(args['target'])
 
 
 func on_exit() -> void:
@@ -30,10 +26,13 @@ func on_exit() -> void:
 
 
 #endregion
-func _strike() -> void:
+func _strike(target: CharacterFoe) -> void:
 	var roll = rogue.roll_for(Ruleset.ActionType.STRIKE)
 	if roll.total > target.get_total_value(Ruleset.Stat.STRIKE):
 		print("Hit.")
 		target.take_damage(rogue.get_total_value(Ruleset.Stat.DAMAGE))
 	else:
 		print("Miss.")
+
+	transition.emit(ActionStateMachine.PERFORMED)
+	

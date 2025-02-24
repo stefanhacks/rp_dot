@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Messages="*res://scripts/globals/messages.gd"
 Ruleset="*res://scripts/globals/ruleset.gd"
 DiceTray="*res://scripts/globals/dice_tray.gd"
 ConfirmationPopup="*res://scripts/globals/confirmation_popup.gd"

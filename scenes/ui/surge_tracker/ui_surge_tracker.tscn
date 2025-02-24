@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bqlwtc0rx648u"]
+[gd_scene load_steps=7 format=3 uid="uid://bqlwtc0rx648u"]
 
 [ext_resource type="Script" path="res://scenes/ui/surge_tracker/ui_surge_tracker.gd" id="1_5doxe"]
 [ext_resource type="PackedScene" uid="uid://c7vaq51wradak" path="res://scenes/ui/surge_tracker/ui_surge_entry.tscn" id="1_fkutx"]
@@ -17,11 +17,8 @@ load_path = "res://.godot/imported/sprout_lands_ui_white_icons.png-428ab769c38bf
 atlas = SubResource("CompressedTexture2D_tehge")
 region = Rect2(0, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_50nh1"]
-atlas = SubResource("CompressedTexture2D_tehge")
-region = Rect2(64, 0, 16, 16)
-
 [node name="SurgeTracker" type="Control"]
+clip_contents = true
 layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
@@ -29,57 +26,85 @@ offset_bottom = 60.0
 grow_horizontal = 2
 script = ExtResource("1_5doxe")
 
-[node name="Entries" type="HFlowContainer" parent="."]
-layout_mode = 2
-offset_right = 800.0
-offset_bottom = 40.0
-grow_horizontal = 2
-theme_override_constants/h_separation = 4
-alignment = 1
-
-[node name="SurgeEntry" parent="Entries" instance=ExtResource("1_fkutx")]
-layout_mode = 2
-
-[node name="SurgeEntry2" parent="Entries" instance=ExtResource("1_fkutx")]
-layout_mode = 2
-
-[node name="SurgeEntry4" parent="Entries" instance=ExtResource("1_fkutx")]
-layout_mode = 2
-
-[node name="SurgeEntry5" parent="Entries" instance=ExtResource("1_fkutx")]
-layout_mode = 2
-
-[node name="SurgeEntry3" parent="Entries" instance=ExtResource("1_fkutx")]
-layout_mode = 2
-
-[node name="Icons" type="HFlowContainer" parent="."]
+[node name="CharList" type="Control" parent="."]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -8.0
-offset_top = 43.0
-offset_right = 88.0
-offset_bottom = 59.0
+offset_left = -111.0
+offset_top = 5.0
+offset_right = 189.0
+offset_bottom = 45.0
 grow_horizontal = 2
-theme_override_constants/h_separation = 22
+scale = Vector2(0.9, 0.9)
 
-[node name="Current" type="TextureRect" parent="Icons"]
+[node name="Entries" type="HFlowContainer" parent="CharList"]
+layout_mode = 1
+offset_right = 300.0
+offset_bottom = 40.0
+theme_override_constants/h_separation = 4
+
+[node name="SurgeEntry" parent="CharList/Entries" instance=ExtResource("1_fkutx")]
 layout_mode = 2
+
+[node name="SurgeEntry2" parent="CharList/Entries" instance=ExtResource("1_fkutx")]
+layout_mode = 2
+
+[node name="SurgeEntry4" parent="CharList/Entries" instance=ExtResource("1_fkutx")]
+layout_mode = 2
+
+[node name="SurgeEntry5" parent="CharList/Entries" instance=ExtResource("1_fkutx")]
+layout_mode = 2
+
+[node name="SurgeEntry3" parent="CharList/Entries" instance=ExtResource("1_fkutx")]
+layout_mode = 2
+
+[node name="SurgeEntry6" parent="CharList/Entries" instance=ExtResource("1_fkutx")]
+layout_mode = 2
+
+[node name="SurgeEntry7" parent="CharList/Entries" instance=ExtResource("1_fkutx")]
+layout_mode = 2
+
+[node name="SurgeEntry8" parent="CharList/Entries" instance=ExtResource("1_fkutx")]
+layout_mode = 2
+
+[node name="CurrentEntry" parent="." instance=ExtResource("1_fkutx")]
+layout_mode = 2
+offset_left = 241.0
+offset_top = 3.0
+offset_right = 275.0
+offset_bottom = 43.0
+
+[node name="IconCurrentChar" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 250.0
+offset_top = 44.0
+offset_right = 266.0
+offset_bottom = 60.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_c3pk8")
 
-[node name="Current2" type="TextureRect" parent="Icons"]
+[node name="IconNextChar" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.627451)
 layout_mode = 2
+offset_left = 297.0
+offset_top = 44.0
+offset_right = 313.0
+offset_bottom = 60.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_lk55k")
 
-[node name="Current3" type="TextureRect" parent="Icons"]
-self_modulate = Color(1, 1, 1, 0.196078)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = SubResource("AtlasTexture_50nh1")
+[node name="TextureRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -119.0
+offset_top = 8.0
+offset_right = -118.0
+offset_bottom = 38.0
+grow_horizontal = 2
+color = Color(0.521569, 0.364706, 0.196078, 0.360784)

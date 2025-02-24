@@ -19,7 +19,7 @@ func on_next_transitions() -> void:
 func on_enter(args: Dictionary) -> void:
 	super(args)
 	target = args['target']
-	ConfirmationPopup.show(_on_confirm, _on_cancel, rogue.global_position + Vector2(0, -50))
+	ConfirmationPopup.show(_on_confirm, _on_cancel, Messages.Popups['STRIKE'], rogue.global_position + Vector2(0, -50))
 
 
 func on_exit() -> void:

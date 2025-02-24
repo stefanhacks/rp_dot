@@ -160,7 +160,6 @@ shape = SubResource("RectangleShape2D_0714u")
 
 [node name="HealthBarContainer" parent="Rogue" instance=ExtResource("15_8e47o")]
 visible = false
-offset_bottom = 43.0
 
 [node name="Rogue2" type="Node2D" parent="."]
 position = Vector2(368, 240)
@@ -188,7 +187,6 @@ shape = SubResource("RectangleShape2D_0714u")
 
 [node name="HealthBarContainer" parent="Rogue2" instance=ExtResource("15_8e47o")]
 visible = false
-offset_bottom = 43.0
 
 [node name="Foe" type="Node2D" parent="."]
 position = Vector2(368, 304)
@@ -215,7 +213,6 @@ shape = SubResource("RectangleShape2D_whj5s")
 
 [node name="HealthBarContainer" parent="Foe" instance=ExtResource("15_8e47o")]
 visible = false
-offset_bottom = 43.0
 
 [connection signal="input_event" from="Rogue/Area2D" to="Rogue" method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Rogue/Area2D" to="Rogue" method="_on_area_2d_mouse_entered"]
